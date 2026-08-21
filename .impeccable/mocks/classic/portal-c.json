@@ -1,0 +1,7 @@
+{
+  "direction": "Portal clásico",
+  "variant": "C — híbrido",
+  "approved": true,
+  "promptFile": "portal-c.prompt.txt",
+  "references": ["https://bangerbrewing.com/", "https://manifestboston.org/"]
+}

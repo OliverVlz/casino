@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-18T21:50:00-05:00",
+  "title": "Design System: Juego Claro",
+  "extensions": {
+    "colorMeta": {
+      "primary-navy": {
+        "role": "primary",
+        "displayName": "Azul tinta institucional",
+        "canonical": "#011535",
+        "tonalRamp": ["#010817", "#011535", "#0b2a55", "#24456e", "#526c8e", "#899aad", "#c2cbd5", "#f0f3f6"]
+      },
+      "primary-orange": {
+        "role": "primary",
+        "displayName": "Naranja de decisión",
+        "canonical": "#fd6f27",
+        "tonalRamp": ["#351004", "#6f2707", "#a93d0a", "#d94e0c", "#fd6f27", "#ff9d6d", "#ffcbb3", "#fff1e9"]
+      },
+      "link-blue": {
+        "role": "secondary",
+        "displayName": "Azul de enlace",
+        "canonical": "#125df5",
+        "tonalRamp": ["#061333", "#082766", "#0b3c9d", "#0e50d0", "#3979f7", "#78a3fa", "#b6cdfd", "#eef4ff"]
+      },
+      "status-green": {
+        "role": "secondary",
+        "displayName": "Verde de estado",
+        "canonical": "#16833b",
+        "tonalRamp": ["#031b0b", "#073b18", "#0c5c28", "#16833b", "#3da25c", "#78c28c", "#b8dfc2", "#eef8f1"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papel marfil",
+        "canonical": "#fbfaf9",
+        "tonalRamp": ["#252321", "#46423e", "#6b6660", "#918b84", "#b6b1ab", "#d8d4d0", "#eeece9", "#fbfaf9"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Superficie blanca",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#242424", "#474747", "#6b6b6b", "#919191", "#b8b8b8", "#dddddd", "#f2f2f2", "#ffffff"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta casi negra",
+        "canonical": "#000016",
+        "tonalRamp": ["#000016", "#10102b", "#2b2b45", "#505068", "#7a7a8d", "#aaaab7", "#d8d8de", "#f5f5f7"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display condensado", "purpose": "Único encabezado principal de cada página." },
+      "headline": { "displayName": "Encabezado editorial", "purpose": "Títulos de directorio y secciones." },
+      "body": { "displayName": "Lectura editorial", "purpose": "Descripciones, método y regulación." },
+      "label": { "displayName": "Dato compacto", "purpose": "Metadatos, botones, estados y fechas." }
+    },
+    "shadows": [
+      { "name": "panel-ambiental", "value": "0 16px 42px rgba(1, 21, 53, 0.11)", "purpose": "Separar el directorio del campo azul y el papel." },
+      { "name": "registro-bajo", "value": "0 5px 18px rgba(1, 21, 53, 0.075)", "purpose": "Delimitar registros sin convertirlos en objetos flotantes." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Entrada del directorio y feedback breve de controles." },
+      { "name": "directory-arrival", "value": "620ms", "purpose": "Una sola revelación recortada del panel principal; se elimina con reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "wide-records", "value": "1180px" },
+      { "name": "stack-editorial", "value": "920px" },
+      { "name": "mobile", "value": "680px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón primario",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Continúa hacia un destino externo; el naranja se reserva para esta decisión.",
+      "html": "<button class=\"ds-button-primary\">Visitar <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"M14 5h5v5M19 5l-9 9M19 13v6H5V5h6\"/></svg></button>",
+      "css": ".ds-button-primary{min-height:44px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #fd6f27;border-radius:8px;background:#fd6f27;color:#000016;font:700 13px/1.25 'Archivo Variable',sans-serif;box-shadow:0 5px 14px rgba(253,111,39,.22);transition:transform 180ms cubic-bezier(.16,1,.3,1),background-color 180ms cubic-bezier(.16,1,.3,1)}.ds-button-primary svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2}.ds-button-primary:hover{background:#d94e0c;transform:translateY(-1px)}.ds-button-primary:focus-visible{outline:3px solid #0a62ff;outline-offset:3px}"
+    },
+    {
+      "name": "Botón secundario",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Abre una ficha editorial interna sin competir con la acción principal.",
+      "html": "<button class=\"ds-button-outline\">Leer ficha</button>",
+      "css": ".ds-button-outline{min-height:44px;padding:0 20px;border:1px solid #125df5;border-radius:8px;background:#fff;color:#125df5;font:700 13px/1.25 'Archivo Variable',sans-serif;transition:transform 180ms cubic-bezier(.16,1,.3,1),background-color 180ms cubic-bezier(.16,1,.3,1)}.ds-button-outline:hover{background:#f3f7ff;transform:translateY(-1px)}.ds-button-outline:focus-visible{outline:3px solid #0a62ff;outline-offset:3px}"
+    },
+    {
+      "name": "Selector editorial",
+      "kind": "input",
+      "description": "Control nativo para ordenar el listado sin ocultar su etiqueta.",
+      "html": "<label class=\"ds-sort\"><span>Ordenar:</span><select><option>actualización</option><option>nombre</option></select></label>",
+      "css": ".ds-sort{display:flex;align-items:center;gap:10px;color:#344054;font:400 14px/1.4 'Archivo Variable',sans-serif}.ds-sort select{min-height:42px;padding:0 36px 0 14px;border:1px solid #c6ced9;border-radius:8px;background:#fff;color:#011535;font-weight:650}.ds-sort select:focus-visible{outline:3px solid #0a62ff;outline-offset:3px}"
+    },
+    {
+      "name": "Registro del directorio",
+      "kind": "card",
+      "refersTo": "directory-record",
+      "description": "Fila comparativa con marca sintética, resumen, metadatos y dos niveles de acción.",
+      "html": "<article class=\"ds-record\"><span class=\"ds-record-mark\">A</span><div><strong>Demo Andino</strong><p>Ficha editorial con información revisable.</p></div><span class=\"ds-record-status\">Pendiente</span></article>",
+      "css": ".ds-record{min-height:112px;padding:15px 18px;display:grid;grid-template-columns:74px 1fr auto;align-items:center;gap:20px;border:1px solid #dce1e8;border-radius:11px;background:#fff;color:#000016;font-family:'Archivo Variable',sans-serif;box-shadow:0 5px 18px rgba(1,21,53,.075);transition:transform 190ms cubic-bezier(.16,1,.3,1),box-shadow 190ms cubic-bezier(.16,1,.3,1)}.ds-record:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(1,21,53,.11)}.ds-record:focus-within{outline:3px solid #0a62ff;outline-offset:3px}.ds-record-mark{width:70px;height:70px;display:grid;place-items:center;border-radius:8px;background:#011535;color:#fff;font-size:36px;font-weight:850}.ds-record strong{font-size:20px}.ds-record p{margin:4px 0 0;color:#566174}.ds-record-status{color:#16833b;font-size:13px;font-weight:700}"
+    },
+    {
+      "name": "Cabecera clásica",
+      "kind": "nav",
+      "description": "Wordmark a la izquierda, navegación centrada y locale separado a la derecha.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-wordmark\" href=\"#\">JUEGO <span>CLARO</span></a><div><a href=\"#\">Casinos</a><a href=\"#\">Cómo evaluamos</a><a href=\"#\">Regulación</a></div><button>ES-CO</button></nav>",
+      "css": ".ds-nav{min-height:72px;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:48px;border-bottom:1px solid #dce1e8;background:#fff;color:#011535;font-family:'Archivo Variable',sans-serif}.ds-wordmark{font-size:28px;font-stretch:76%;font-weight:850;text-decoration:none}.ds-wordmark span{color:#fd6f27}.ds-nav div{display:flex;justify-content:center;gap:46px}.ds-nav div a{color:#000016;font-size:15px;font-weight:650;text-decoration:none}.ds-nav a:hover{text-decoration:underline}.ds-nav button{min-height:40px;padding:0 14px;border:1px solid #c6ced9;border-radius:8px;background:#fff;color:#011535;font-weight:700}.ds-nav a:focus-visible,.ds-nav button:focus-visible{outline:3px solid #0a62ff;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El portal editorial claro",
+    "overview": "Juego Claro adopta la familiaridad de un directorio clásico y la disciplina de una publicación editorial. La interfaz es sobria, densa y orientada a tareas: primero ubica al visitante en su mercado, luego presenta registros comparables y finalmente explica fuentes, método y contexto regulatorio. La personalidad nace del contraste entre una banda azul marino compacta, superficies blancas e ivory y un acento naranja reservado para acciones primarias.",
+    "keyCharacteristics": [
+      "Cabecera convencional, estable y fácil de escanear.",
+      "Tipografía Archivo condensada y pesada en títulos, regular en lectura prolongada.",
+      "Reglas nítidas, profundidad ambiental moderada y datos alineados.",
+      "Azul para navegación, naranja para la salida principal y verde solo para estados.",
+      "Un único código visual adaptable a múltiples mercados e idiomas."
+    ],
+    "rules": [
+      { "name": "The Scarce Orange Rule", "body": "El naranja identifica la acción principal; no se convierte en color de fondo decorativo ni en un indicador genérico.", "section": "colors" },
+      { "name": "The Evidence Color Rule", "body": "El verde comunica estado, nunca reputación, puntuación o recomendación.", "section": "colors" },
+      { "name": "The One Display Rule", "body": "Cada página tiene un solo momento tipográfico de escala display; el resto de la jerarquía desciende con claridad.", "section": "typography" },
+      { "name": "The Flat Content Rule", "body": "Las secciones editoriales permanecen casi planas; la mayor profundidad pertenece al directorio, porque representa la tarea principal.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do mantener el listado y su contexto de mercado dentro del primer viewport de escritorio.",
+      "Do usar SVG semánticos y discretos para acciones y metadatos.",
+      "Do mostrar fuente, fecha de revisión y naturaleza demostrativa donde correspondan.",
+      "Do respetar prefers-reduced-motion y limitar la animación al ingreso del panel y feedback corto."
+    ],
+    "donts": [
+      "Don't introducir gradientes, efectos de casino, fondos fotográficos o texturas que compitan con la información.",
+      "Don't usar estrellas, trofeos, testimonios o sellos visuales para insinuar reputación no demostrada.",
+      "Don't convertir cada bloque en una tarjeta flotante; la jerarquía depende de que el directorio sea la superficie dominante.",
+      "Don't usar texto oculto, páginas por variación de consulta ni recursos visuales como sustituto de evidencia editorial."
+    ]
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "snapshotVersion": 1,
+  "siteKey": "colombia-demo",
+  "generatedAt": "2026-08-18T12:00:00.000Z",
+  "checksum": "c130bfbafcf7fd3edadc63e7755d00d519226f53084b044fbcf22ccbb2976318",
+  "site": {
+    "name": "Juego Claro",
+    "domain": "juegoclaro.example",
+    "marketCode": "CO",
+    "defaultLocale": "es-CO",
+    "locales": ["es-CO"]
+  },
+  "policy": {
+    "jurisdiction": "Colombia",
+    "minimumAge": 18,
+    "effectiveFrom": "2026-08-18T00:00:00.000Z",
+    "reviewedAt": "2026-08-18T12:00:00.000Z",
+    "promotionalRestrictions": [
+      "Las condiciones comerciales permanecen ocultas hasta que exista una fuente verificable y revisión editorial.",
+      "El contenido jurídico definitivo requiere revisión profesional antes de producción."
+    ],
+    "responsibleGamingResources": [
+      {
+        "label": "Juega Legal — Coljuegos",
+        "url": "https://www.coljuegos.gov.co/publicaciones/307337/juega-legal/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Operadores de juegos online autorizados",
+        "url": "https://www.coljuegos.gov.co/publicaciones/301841/juegosonline/",
+        "publisher": "Coljuegos",
+        "reviewedAt": "2026-08-18T12:00:00.000Z"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "id": "home-es-co",
+      "locale": "es-CO",
+      "route": "/",
+      "title": "Casinos online en Colombia | Juego Claro",
+      "description": "Compara fichas editoriales, condiciones declaradas y fechas de actualización de casinos online para Colombia.",
+      "canonicalUrl": "https://juegoclaro.example/es",
+      "updatedAt": "2026-08-18T12:00:00.000Z",
+      "reviewedAt": "2026-08-18T12:00:00.000Z",
+      "author": {
+        "name": "Equipo editorial de demostración",
+        "role": "Contenido de desarrollo"
+      },
+      "blocks": [
+        {
+          "blockType": "hero",
+          "eyebrow": "Comparador editorial",
+          "heading": "Encuentra información clara antes de elegir",
+          "summary": "Revisa fichas, condiciones declaradas y fechas de actualización para Colombia.",
+          "primaryActionLabel": "Ver casinos para comparar",
+          "primaryActionHref": "/es#casinos"
+        },
+        {
+          "blockType": "casinoList",
+          "heading": "Casinos para comparar",
+          "intro": "Registros ficticios que muestran cómo funcionará el directorio con información revisada.",
+          "casinoSlugs": ["demo-andino", "demo-rio", "demo-capital"]
+        },
+        {
+          "blockType": "copy",
+          "heading": "Cómo seleccionamos y revisamos la información",
+          "body": [
+            "Registramos la información declarada y conservamos la fuente junto a su fecha de revisión.",
+            "Separamos la comprobación documental del orden editorial y de cualquier relación comercial.",
+            "Antes de considerar un operador, consulta la lista oficial publicada por Coljuegos y revisa su dominio, contrato y condiciones."
+          ],
+          "sources": [
+            {
+              "label": "Lista oficial de operadores online",
+              "url": "https://www.coljuegos.gov.co/publicaciones/301841/juegosonline/",
+              "publisher": "Coljuegos",
+              "reviewedAt": "2026-08-18T12:00:00.000Z"
+            }
+          ]
+        },
+        {
+          "blockType": "responsibleGaming",
+          "heading": "Regulación y juego responsable",
+          "body": "Esta demostración está dirigida a personas adultas. Verifica siempre la información en la fuente institucional y define límites antes de jugar.",
+          "resources": [
+            {
+              "label": "Consultar Juega Legal en Coljuegos",
+              "url": "https://www.coljuegos.gov.co/publicaciones/307337/juega-legal/"
+            }
+          ]
+        },
+        {
+          "blockType": "faq",
+          "heading": "Preguntas frecuentes",
+          "items": [
+            {
+              "question": "¿Cómo verifico si un sitio está autorizado en Colombia?",
+              "answer": "Consulta la lista oficial de operadores de juegos online publicada por Coljuegos y compara el dominio y la información contractual antes de registrarte.",
+              "sources": [
+                {
+                  "label": "Operadores online autorizados",
+                  "url": "https://www.coljuegos.gov.co/publicaciones/301841/juegosonline/",
+                  "publisher": "Coljuegos",
+                  "reviewedAt": "2026-08-18T12:00:00.000Z"
+                }
+              ]
+            },
+            {
+              "question": "¿Estas fichas son recomendaciones reales?",
+              "answer": "No. Los nombres, documentos y enlaces de esta versión son ficticios y existen únicamente para validar el diseño y el flujo editorial.",
+              "sources": []
+            },
+            {
+              "question": "¿Qué información debería revisar antes de visitar un operador?",
+              "answer": "Revisa el dominio, el estado documental, las condiciones completas, la fecha de actualización y los recursos de juego responsable. No tomes una posición del listado como garantía.",
+              "sources": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "casinos": [
+    {
+      "slug": "demo-andino",
+      "name": "Demo Andino",
+      "summary": "Ficha editorial con datos declarados de demostración y revisión pendiente.",
+      "licenseLabel": "Documento de ejemplo · no verificado",
+      "licenseUrl": "https://example.com/documento-demo-001",
+      "verifiedAt": "2026-08-18T12:00:00.000Z",
+      "highlights": ["Condiciones pendientes", "Fuente por asociar"]
+    },
+    {
+      "slug": "demo-rio",
+      "name": "Demo Río",
+      "summary": "Registro ficticio para probar la comparación de fuentes, condiciones y fechas.",
+      "licenseLabel": "Documento de ejemplo · no verificado",
+      "licenseUrl": "https://example.com/documento-demo-002",
+      "verifiedAt": "2026-08-18T12:00:00.000Z",
+      "highlights": ["Sin datos comerciales", "Revisión demostrativa"]
+    },
+    {
+      "slug": "demo-capital",
+      "name": "Demo Capital",
+      "summary": "Datos ficticios pendientes de sustitución por un expediente editorial real.",
+      "licenseLabel": "Documento de ejemplo · no verificado",
+      "licenseUrl": "https://example.com/documento-demo-003",
+      "verifiedAt": "2026-08-18T12:00:00.000Z",
+      "highlights": ["Documento DEMO-003", "Estado pendiente"]
+    }
+  ],
+  "offers": [
+    {
+      "slug": "demo-andino",
+      "casinoSlug": "demo-andino",
+      "label": "Enlace externo de demostración",
+      "destinationUrl": "https://example.com/demo-andino",
+      "termsSummary": "Sin oferta comercial. Destino ficticio para probar la redirección local.",
+      "validFrom": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "slug": "demo-rio",
+      "casinoSlug": "demo-rio",
+      "label": "Enlace externo de demostración",
+      "destinationUrl": "https://example.com/demo-rio",
+      "termsSummary": "Sin oferta comercial. Destino ficticio para probar la redirección local.",
+      "validFrom": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "slug": "demo-capital",
+      "casinoSlug": "demo-capital",
+      "label": "Enlace externo de demostración",
+      "destinationUrl": "https://example.com/demo-capital",
+      "termsSummary": "Sin oferta comercial. Destino ficticio para probar la redirección local.",
+      "validFrom": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "redirects": []
+}

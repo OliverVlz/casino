@@ -1,0 +1,7 @@
+{
+  "direction": "Portal clásico",
+  "variant": "B — oscuro compacto",
+  "approved": false,
+  "promptFile": "portal-b.prompt.txt",
+  "references": ["https://bangerbrewing.com/", "https://manifestboston.org/"]
+}

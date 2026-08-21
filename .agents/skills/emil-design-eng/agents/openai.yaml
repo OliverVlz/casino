@@ -1,0 +1,6 @@
+interface:
+  display_name: Emil Design Engineering
+  short_description: Review UI polish, animation, and micro-interactions.
+
+policy:
+  allow_implicit_invocation: false

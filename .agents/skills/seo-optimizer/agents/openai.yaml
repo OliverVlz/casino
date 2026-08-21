@@ -1,0 +1,7 @@
+interface:
+  display_name: "SEO, GEO & AEO Expert"
+  short_description: "Improve search, answers, and AI citation visibility"
+  default_prompt: "Use $seo-optimizer to audit and improve this site's SEO, AEO, and GEO visibility."
+
+policy:
+  allow_implicit_invocation: true

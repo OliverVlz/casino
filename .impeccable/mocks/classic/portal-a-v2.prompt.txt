@@ -1,0 +1,12 @@
+Use case: precise-object-edit
+Asset type: corrected high-fidelity desktop website comp
+Input images: Image 1 is the edit target.
+Primary request: Preserve the entire layout, visual design, spacing, header, hero, filters, cards, colors, typography, and section arrangement exactly. Change only the potentially factual or regulatory text inside the three casino rows and the lower regulatory copy so the page contains no invented license, authority, legal, operator-quality, or commercial claim.
+Required text changes:
+- In every row, keep the heading “Licencia declarada” but replace all authority and license values with “Documento de ejemplo” and “DEMO-001”, “DEMO-002”, “DEMO-003”.
+- Replace row summaries with neutral text: “Ficha editorial demostrativa.”, “Información ficticia para pruebas.”, “Datos pendientes de revisión.”
+- Replace conditions values with “Sin datos comerciales” and “Pendiente de fuente”.
+- Replace “Revisión completa” with “Estado de ejemplo”.
+- In the “Regulación en Colombia” paragraph, replace all legal assertions with: “Este bloque mostrará información regulatoria después de la revisión jurídica y editorial correspondiente.”
+- Keep “DATOS FICTICIOS PARA DESARROLLO” and the footer warning.
+Constraints: change only this text; no new elements, no real brands, licenses, regulators, bonuses, ratings, endorsements, claims, logos, or watermarks.

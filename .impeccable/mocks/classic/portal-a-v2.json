@@ -1,0 +1,7 @@
+{
+  "direction": "Portal clásico",
+  "variant": "A — claro editorial",
+  "approved": false,
+  "promptFile": "portal-a-v2.prompt.txt",
+  "references": ["https://bangerbrewing.com/", "https://manifestboston.org/"]
+}

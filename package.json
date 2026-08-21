@@ -1,0 +1,24 @@
+{
+  "name": "casino-content-platform",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=24.15.0",
+    "pnpm": ">=11"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --stream --filter @casino/control-plane --filter @casino/web dev",
+    "dev:cms": "pnpm --filter @casino/control-plane dev",
+    "dev:web": "pnpm --filter @casino/web dev",
+    "sync:colombia": "pnpm --filter @casino/web sync:snapshot",
+    "infra:up": "docker compose -p casino-platform -f infra/compose.local.yml up -d --wait",
+    "infra:down": "docker compose -p casino-platform -f infra/compose.local.yml down",
+    "infra:status": "docker compose -p casino-platform -f infra/compose.local.yml ps",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "generate:types": "pnpm --filter @casino/control-plane generate:types",
+    "seed": "pnpm --filter @casino/control-plane seed"
+  }
+}
