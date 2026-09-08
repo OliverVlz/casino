@@ -99,9 +99,12 @@ void mainImage(out vec4 o, in vec2 fragCoord) {
   float rimGlow = smoothstep(borderWeight, 0.0, abs(distToCore - cableThick));
 
   // --- PREMIUM CASINO NEON PLAYING CARDS ---
-  float cardHalfW = cableThick * 1.55 * uPulseWidth;
-  float cardHalfH = uPulseLength * 0.52; // Proper 2.5:3.5 playing card aspect ratio
-  float cardCorner = 0.038;
+  // Sized so cards stay strictly inside the cable tracks with a crisp breathing margin
+  float aspectFactor = 6.2831853 / cablesCount;
+  float cardHalfW = cableThick * 0.82 * uPulseWidth;
+  // Sized longer as requested (multiplier adjusted to 2.25)
+  float cardHalfH = cardHalfW * aspectFactor * 2.25 * (uPulseLength / 0.28);
+  float cardCorner = cardHalfW * 0.16;
   vec2 cardUV = vec2(gvX, pulseFact - 0.5);
 
   // Card rounded rectangle signed distance field
@@ -111,13 +114,13 @@ void mainImage(out vec4 o, in vec2 fragCoord) {
   float cardMask = 1.0 - smoothstep(0.0, cardEdge, distCard);
 
   // Outer neon glow around the card perimeter
-  float cardOuterGlow = exp(-max(distCard, 0.0) * 45.0) * (1.0 - cardMask);
+  float cardOuterGlow = exp(-max(distCard, 0.0) * 55.0) * (1.0 - cardMask);
 
-  // Double gold/neon border
-  float innerCardDist = distCard + 0.018;
+  // Double gold/neon border scaled proportionally
+  float innerCardDist = distCard + cardHalfW * 0.13;
   float cardOuterBorder = clamp(cardMask - (1.0 - smoothstep(0.0, cardEdge, innerCardDist)), 0.0, 1.0);
-  float pinstripeDist = distCard + 0.036;
-  float pinstripe = clamp((1.0 - smoothstep(0.0, cardEdge, pinstripeDist + 0.008)) - (1.0 - smoothstep(0.0, cardEdge, pinstripeDist)), 0.0, 1.0);
+  float pinstripeDist = distCard + cardHalfW * 0.25;
+  float pinstripe = clamp((1.0 - smoothstep(0.0, cardEdge, pinstripeDist + cardHalfW * 0.05)) - (1.0 - smoothstep(0.0, cardEdge, pinstripeDist)), 0.0, 1.0);
 
   // Casino Guilloche / Diamond geometric pattern on card back/face
   vec2 gridUV = cardUV / vec2(cardHalfW, cardHalfH);
@@ -171,8 +174,9 @@ void mainImage(out vec4 o, in vec2 fragCoord) {
   float cornerAce = 0.0;
   if (cardUV.x * cardUV.y < 0.0) {
     vec2 pCard = (cardUV.x < 0.0) ? cardUV : -cardUV;
-    float cornerScale = cardHalfH * 0.16;
-    vec2 cUV = (pCard - vec2(-cardHalfW * 0.63, cardHalfH * 0.66)) / cornerScale;
+    float cornerScale = cardHalfH * 0.32;
+    vec2 delta = pCard - vec2(-cardHalfW * 0.63, cardHalfH * 0.72);
+    vec2 cUV = vec2(delta.x * aspectFactor, delta.y) / cornerScale;
     if (abs(cUV.x) < 1.3 && abs(cUV.y) < 1.3) {
       // Capital Letter 'A' (Ace)
       vec2 pA = cUV - vec2(0.0, 0.38);
@@ -279,7 +283,7 @@ const LightTunnel = ({
   pulseLength = 0.28,
   pulseBlend = 1,
   pulseWidth = 1,
-  cableCount = 20,
+  cableCount = 14,
   thickness = 0.35,
   rimWidth = 0.15,
   waviness = 0.3,

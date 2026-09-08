@@ -24,7 +24,7 @@ export function HeroTunnel({
           pulseLength={0.28}
           pulseBlend={1}
           pulseWidth={1}
-          cableCount={20}
+          cableCount={14}
           thickness={0.35}
           rimWidth={0.15}
           waviness={0.3}
