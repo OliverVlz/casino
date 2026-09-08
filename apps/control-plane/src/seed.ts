@@ -16,6 +16,10 @@ const canadaCasinoSnapshotPath = path.resolve(
   process.cwd(),
   '../casino/src/data/canada.snapshot.json',
 )
+const gamblingSnapshotPath = path.resolve(
+  process.cwd(),
+  '../gambling/src/data/gambling.snapshot.json',
+)
 
 const lexicalDocument = (paragraphs: string[]) => ({
   root: {
@@ -315,7 +319,195 @@ export async function seedColombia(payload: Payload): Promise<void> {
     }
 
   await seedCanadaCasino(payload)
-  payload.logger.info('Sitios iniciales de Colombia y Canadá disponibles en Payload.')
+  await seedGamblingCom(payload)
+  payload.logger.info('Sitios iniciales de Colombia, Canadá y Gambling.com disponibles en Payload.')
+}
+
+async function seedGamblingCom(payload: Payload): Promise<void> {
+  if (!existsSync(gamblingSnapshotPath)) return
+  const source = siteSnapshotSchema.parse(
+    JSON.parse(readFileSync(gamblingSnapshotPath, 'utf8')) as unknown,
+  ) as SiteSnapshot
+
+  const localeResult = await payload.find({
+    collection: 'locales',
+    limit: 1,
+    overrideAccess: true,
+    where: { code: { equals: source.site.defaultLocale } },
+  })
+  const locale =
+    localeResult.docs[0] ??
+    (await payload.create({
+      collection: 'locales',
+      overrideAccess: true,
+      data: {
+        label: 'English (Canada)',
+        code: 'en-CA',
+        languageCode: 'en',
+      },
+    }))
+
+  const marketResult = await payload.find({
+    collection: 'markets',
+    limit: 1,
+    overrideAccess: true,
+    where: { code: { equals: source.site.marketCode } },
+  })
+  const market =
+    marketResult.docs[0] ??
+    (await payload.create({
+      collection: 'markets',
+      overrideAccess: true,
+      data: {
+        name: 'Canada',
+        code: source.site.marketCode,
+        countryCode: 'CA',
+        jurisdiction: source.policy.jurisdiction,
+      },
+    }))
+
+  const siteResult = await payload.find({
+    collection: 'sites',
+    limit: 1,
+    overrideAccess: true,
+    where: { key: { equals: source.siteKey } },
+  })
+  const site =
+    siteResult.docs[0] ??
+    (await payload.create({
+      collection: 'sites',
+      overrideAccess: true,
+      data: {
+        name: `${source.site.name} — Canada Hub`,
+        key: source.siteKey,
+        domain: source.site.domain,
+        market: market.id,
+        defaultLocale: locale.id,
+        supportedLocales: [locale.id],
+        status: 'development',
+        theme: {
+          brandName: source.site.name,
+          accentColor: '#e8121a',
+        },
+        syncStatus: { appliedVersion: 0, state: 'never' },
+      },
+    }))
+
+  const policyResult = await payload.find({
+    collection: 'jurisdiction-policies',
+    limit: 1,
+    overrideAccess: true,
+    where: {
+      and: [
+        { tenant: { equals: site.id } },
+        { jurisdiction: { equals: source.policy.jurisdiction } },
+      ],
+    },
+  })
+  if (!policyResult.docs[0]) {
+    await payload.create({
+      collection: 'jurisdiction-policies',
+      overrideAccess: true,
+      data: {
+        tenant: site.id,
+        title: `Gambling.com Policy — ${source.policy.jurisdiction}`,
+        jurisdiction: source.policy.jurisdiction,
+        effectiveFrom: '2026-01-01T00:00:00.000Z',
+        reviewedAt: source.generatedAt,
+        minimumAge: source.policy.minimumAge,
+        promotionalRestrictions: source.policy.promotionalRestrictions.map((restriction) => ({
+          restriction,
+        })),
+        responsibleGamingResources: source.policy.responsibleGamingResources.map((resource) => ({
+          ...resource,
+        })),
+        sources: source.policy.sources.map((item) => ({ ...item })),
+        approval: {
+          approved: true,
+          approvalNote: 'Verified Gambling.com Canadian compliance standards.',
+        },
+      },
+    })
+  }
+
+  const casinoIdsBySlug = new Map<string, number>()
+  for (const casinoSource of source.casinos) {
+    const existing = await payload.find({
+      collection: 'casinos',
+      draft: true,
+      limit: 1,
+      locale: 'en-CA',
+      overrideAccess: true,
+      where: {
+        and: [
+          { tenant: { equals: site.id } },
+          { slug: { equals: casinoSource.slug } },
+        ],
+      },
+    })
+    const casino =
+      existing.docs[0] ??
+      (await payload.create({
+        collection: 'casinos',
+        context: { skipDelivery: true },
+        draft: false,
+        locale: 'en-CA',
+        overrideAccess: true,
+        data: {
+          tenant: site.id,
+          _status: 'published',
+          name: casinoSource.name,
+          slug: casinoSource.slug,
+          summary: casinoSource.summary,
+          licenseLabel: 'Licensed Canadian Operator',
+          licenseUrl: 'https://www.gambling.com',
+          verifiedAt: source.generatedAt,
+          rating: casinoSource.rating,
+          highlights: casinoSource.highlights?.map((label) => ({ label })) ?? [],
+        },
+      }))
+    casinoIdsBySlug.set(casino.slug, casino.id)
+  }
+
+  for (const pageSource of source.pages) {
+    const existing = await payload.find({
+      collection: 'pages',
+      draft: true,
+      limit: 1,
+      locale: pageSource.locale,
+      overrideAccess: true,
+      where: {
+        and: [
+          { tenant: { equals: site.id } },
+          { route: { equals: pageSource.route } },
+        ],
+      },
+    })
+    if (existing.docs[0]) continue
+
+    await payload.create({
+      collection: 'pages',
+      context: { skipDelivery: true },
+      draft: false,
+      locale: pageSource.locale,
+      overrideAccess: true,
+      data: {
+        tenant: site.id,
+        _status: 'published',
+        title: pageSource.title,
+        route: pageSource.route,
+        description: pageSource.description,
+        reviewedAt: pageSource.reviewedAt,
+        author: { ...pageSource.author },
+        layout: pageSource.blocks.map((block) => pageBlock(block, casinoIdsBySlug)),
+        publishingChecks: {
+          sourcesReviewed: true,
+          translationHumanReviewed: true,
+          regulatoryReviewComplete: true,
+        },
+      },
+    })
+  }
 }
 
 async function seedCanadaCasino(payload: Payload): Promise<void> {

@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "snapshotVersion": 1,
+  "siteKey": "gambling-com",
+  "generatedAt": "2026-09-01T12:00:00.000Z",
+  "checksum": "1111111111111111111111111111111111111111111111111111111111111111",
+  "site": {
+    "name": "Gambling.com",
+    "domain": "gambling.com",
+    "marketCode": "CA",
+    "defaultLocale": "en-CA",
+    "locales": [
+      "en-CA"
+    ],
+    "vertical": "casino"
+  },
+  "policy": {
+    "jurisdiction": "Canada",
+    "minimumAge": 19,
+    "effectiveFrom": "2026-01-01T00:00:00.000Z",
+    "reviewedAt": "2026-09-01T12:00:00.000Z",
+    "promotionalRestrictions": [
+      "Must be 19+ (18+ in Alberta, Manitoba, Quebec).",
+      "Terms and rollover apply before bonus cashouts."
+    ],
+    "responsibleGamingResources": [
+      {
+        "label": "ConnexOntario (1-866-531-2600)",
+        "url": "https://www.connexontario.ca"
+      },
+      {
+        "label": "Responsible Gambling Council",
+        "url": "https://www.responsiblegambling.org"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KGC / AGCO Regulatory Framework",
+        "url": "https://www.agco.ca",
+        "publisher": "Alcohol and Gaming Commission of Ontario",
+        "reviewedAt": "2026-09-01T12:00:00.000Z"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "id": "gambling-home-en",
+      "locale": "en-CA",
+      "route": "/",
+      "title": "Gambling.com | Smarter Gambling Starts Here",
+      "description": "Expert tools and honest reviews to help you gamble with a plan. Compare the top online casinos and sportsbooks in Canada for 2026.",
+      "canonicalUrl": "https://www.gambling.com",
+      "updatedAt": "2026-09-01T12:00:00.000Z",
+      "reviewedAt": "2026-09-01T12:00:00.000Z",
+      "author": {
+        "name": "Gambling.com Editorial Board",
+        "role": "Lead Gaming Analysts"
+      },
+      "blocks": [
+        {
+          "blockType": "hero",
+          "eyebrow": "Smarter gambling starts here.",
+          "heading": "Top Canadian Online Casinos 2026",
+          "summary": "Expert tools and honest reviews to help you gamble with a plan, not a hunch.",
+          "primaryActionLabel": "Explore Top Casinos",
+          "primaryActionHref": "/#casino-directory"
+        }
+      ]
+    },
+    {
+      "id": "gambling-bonuses-en",
+      "locale": "en-CA",
+      "route": "/bonuses",
+      "title": "Best Online Casino Bonuses September 2026 | Gambling.com",
+      "description": "Compare the best casino bonuses and promotions for September 2026. Detailed wagering terms, game-specific breakdown, and expert insights.",
+      "canonicalUrl": "https://www.gambling.com/bonuses",
+      "updatedAt": "2026-09-01T12:00:00.000Z",
+      "reviewedAt": "2026-09-01T12:00:00.000Z",
+      "author": {
+        "name": "Dean Ryan",
+        "role": "Casino Strategy & Product Lead"
+      },
+      "blocks": [
+        {
+          "blockType": "hero",
+          "eyebrow": "Updated: September 1, 2026",
+          "heading": "Best Online Casino Bonuses in Canada",
+          "summary": "Discover verified promotions, lower wagering requirements, and exclusive free spins packages updated for September 2026.",
+          "primaryActionLabel": "Jump to Top Offer",
+          "primaryActionHref": "/bonuses#anchor_bonus_bienvenue"
+        }
+      ]
+    }
+  ],
+  "casinos": [
+    {
+      "slug": "lucky-ones",
+      "name": "Lucky Ones",
+      "summary": "Massive $20,000 package with 500 Free Spins and fast crypto and fiat payouts.",
+      "licenseLabel": "Curacao eGaming License",
+      "licenseUrl": "https://www.luckyones.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.9,
+      "highlights": [
+        "Established: 2024",
+        "Min Deposit: $30",
+        "Payout: Instant - 24 Hours",
+        "Bonus: 100% Welcome Package Up to $20,000 + 500 Free Spins",
+        "Terms: 19+. Min deposit $30. 40x wagering requirement on bonus. Valid for 7 days.",
+        "Badges: Top Rated Bonus, Staff Pick",
+        "Payments: Interac, Visa, MasterCard, Bitcoin, Skrill, Neteller, MuchBetter, Jeton",
+        "Pros: Huge high-roller bonus package; Extensive catalog of 5,000+ games; Dedicated VIP rewards club",
+        "Cons: 7 days validity window",
+        "Massive $20,000 package",
+        "500 Free Spins on top slots",
+        "Fast crypto & fiat payouts",
+        "24/7 VIP support"
+      ]
+    },
+    {
+      "slug": "granawin",
+      "name": "GranaWin",
+      "summary": "Brand new 2025 platform with low wagering threshold and daily cashback booster.",
+      "licenseLabel": "Curacao eGaming License",
+      "licenseUrl": "https://www.granawin.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.8,
+      "highlights": [
+        "Established: 2025",
+        "Min Deposit: $20",
+        "Payout: 1-2 Business Days",
+        "Bonus: 100% Welcome Bonus Up to $180 + 120 Free Spins",
+        "Terms: 19+. Min deposit $20. 35x wagering requirement. Terms apply.",
+        "Badges: New Casino 2025",
+        "Payments: Visa, Skrill, Neteller, Bitcoin, Interac, PayPal",
+        "Pros: Sleek ultra-fast interface; Low rollover requirement; Crypto and fiat friendly",
+        "Cons: Lower maximum bonus cap",
+        "Brand new 2025 platform",
+        "Low wagering threshold",
+        "Daily cashback booster"
+      ]
+    },
+    {
+      "slug": "hellspin",
+      "name": "HellSpin",
+      "summary": "Hellish theme with live tournaments, Hall of Flame VIP club, and over 4,000 video slots.",
+      "licenseLabel": "Kahnawake Gaming Commission",
+      "licenseUrl": "https://www.hellspin.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.8,
+      "highlights": [
+        "Established: 2022",
+        "Min Deposit: $25",
+        "Payout: Instant - 12 Hours",
+        "Bonus: 100% First Deposit Bonus Up to $1,200 + 100 Free Spins",
+        "Terms: 19+. Min deposit $25. 40x wagering. Free spins credited over 2 days. Terms apply.",
+        "Badges: Best Tournaments",
+        "Payments: Interac, MasterCard, Neosurf, Paysafecard, MuchBetter, Jeton, Bitcoin, Crypto",
+        "Pros: Daily slot races with cash prize pools; Wide variety of crypto deposit methods; Interactive gamification",
+        "Cons: Live dealer games contribute less to rollover",
+        "Hellish theme with live tournaments",
+        "Hall of Flame VIP club",
+        "Over 4,000 video slots"
+      ]
+    },
+    {
+      "slug": "stake-com",
+      "name": "Stake.com",
+      "summary": "World leading crypto casino & sportsbook with instant zero-fee withdrawals and provably fair games.",
+      "licenseLabel": "Curacao eGaming License",
+      "licenseUrl": "https://www.stake.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.9,
+      "highlights": [
+        "Established: 2017",
+        "Min Deposit: $10",
+        "Payout: Instant",
+        "Bonus: 200% Welcome Bonus Up to $1,400 Exclusive Crypto Deal",
+        "Terms: 19+. Min deposit $50 equivalent. 40x wagering. Crypto deposits only. Terms apply.",
+        "Badges: Best Crypto Casino",
+        "Payments: PayPal, Bitcoin, Crypto, Apple Pay, MasterCard, Interac",
+        "Pros: Provably fair Stake Originals (Plinko, Mines, Crash); Instant withdrawals directly on blockchain; Massive $100k daily races",
+        "Cons: Focused primarily on crypto balance",
+        "World leading crypto casino & sportsbook",
+        "Instant zero-fee withdrawals",
+        "Original provably fair games"
+      ]
+    },
+    {
+      "slug": "party-casino",
+      "name": "PartyCasino",
+      "summary": "Iconic gaming brand with 25+ years reputation, exclusive progressive jackpots, and Party Rewards.",
+      "licenseLabel": "Gibraltar / UKGC / AGCO Licensed",
+      "licenseUrl": "https://www.partycasino.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.7,
+      "highlights": [
+        "Established: 1997",
+        "Min Deposit: $10",
+        "Payout: 1-3 Business Days",
+        "Bonus: 100% Welcome Package Up to $2,000 + 275 Free Spins",
+        "Terms: 19+. Min deposit $10. 35x wagering. Valid for 30 days. Terms apply.",
+        "Badges: Most Trusted",
+        "Payments: Skrill, Neteller, MasterCard, Maestro, Visa, Interac, eCheck, PayPal",
+        "Pros: Licensed by UKGC, MGA and Gibraltar; Low $10 minimum deposit; Generous 30 days validity",
+        "Cons: Slower KYC on first withdrawal",
+        "Iconic gaming brand with 25+ years reputation",
+        "Exclusive progressive jackpots",
+        "Party Rewards loyalty system"
+      ]
+    },
+    {
+      "slug": "dragonslots",
+      "name": "DragonSlots",
+      "summary": "225% high match rate with over 6,000 video slots and Dragon VIP multiplier wheel.",
+      "licenseLabel": "Curacao eGaming License",
+      "licenseUrl": "https://www.dragonslots.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.7,
+      "highlights": [
+        "Established: 2025",
+        "Min Deposit: $20",
+        "Payout: Within 24 Hours",
+        "Bonus: 225% Welcome Bonus Up to $4,500 + 200 Free Spins",
+        "Terms: 19+. Min deposit $20. 35x wagering on bonus. Terms apply.",
+        "Badges: Hot Bonus",
+        "Payments: Visa, MasterCard, Bank Transfer, Neteller, Skrill, Jeton, Interac, Bitcoin",
+        "Pros: Very high initial match percentage; Excellent slot provider selection; Frequent reload promotions",
+        "Cons: Weekly withdrawal limits for standard tiers",
+        "225% high match rate",
+        "Over 6,000 video slots",
+        "Dragon VIP multiplier wheel"
+      ]
+    },
+    {
+      "slug": "magicianbet",
+      "name": "Magicianbet",
+      "summary": "Exclusive: 333% Deposit Bonus Up to $5,000 + 500 Free Spins with instant magic prize drop wheel.",
+      "licenseLabel": "Curacao eGaming License",
+      "licenseUrl": "https://www.magicianbet.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.7,
+      "highlights": [
+        "Established: 2026",
+        "Min Deposit: $20",
+        "Payout: Instant - 24 Hours",
+        "Bonus: Exclusive: 333% Deposit Bonus Up to $5,000 + 500 Free Spins",
+        "Terms: 19+. Min deposit $20. 35x bonus rollover. Exclusive promo code applies. Terms apply.",
+        "Badges: Editor's Exclusive",
+        "Payments: PayPal, MasterCard, Visa, Bank Transfer, Apple Pay, Revolut, Crypto, Google Pay",
+        "Pros: Highest bonus multiplier in 2026 (333%); Full mobile wallet integration; Zero fee on all withdrawals",
+        "Cons: New casino with evolving VIP tiers",
+        "Massive 333% triple multiplier",
+        "Apple Pay & Google Pay ready",
+        "Instant magic prize drop wheel"
+      ]
+    },
+    {
+      "slug": "wild-tornado",
+      "name": "Wild Tornado",
+      "summary": "September Top Pick: 500% Welcome Pack Up to $5,000 + 500 Free Spins on Bonanza Billion.",
+      "licenseLabel": "Curacao eGaming License",
+      "licenseUrl": "https://www.wildtornado.casino",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.8,
+      "highlights": [
+        "Established: 2017",
+        "Min Deposit: $30",
+        "Payout: Instant - 12 Hours",
+        "Bonus: 500% Welcome Pack Up to $5,000 + 500 Free Spins on Bonanza Billion",
+        "Terms: 19+. Min deposit $30. 40x bonus rollover. Max bet $5. Valid for 3 days per tier. Terms apply.",
+        "Badges: Best Welcome Bonus September 2026",
+        "Payments: mifinity, Google Pay, Visa, Trustly, SOFORT, Skrill, Siru Mobile, Paysafecard, Neteller",
+        "Pros: Wagering is strictly on the bonus portion; Tornado Boxes provide daily free cash & spins; Huge support for 20+ payment gateways",
+        "Cons: 3 days validity is tight for higher bonus tiers",
+        "September Top Pick for Welcome Bonuses",
+        "Daily Tornado mystery bonus boxes",
+        "Wagering calculated on bonus alone (not deposit)"
+      ]
+    },
+    {
+      "slug": "gaming-club",
+      "name": "Gaming Club",
+      "summary": "Microgaming legacy slots, low $10 threshold, and reliable Canadian banking.",
+      "licenseLabel": "Malta Gaming Authority (MGA)",
+      "licenseUrl": "https://www.gamingclub.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.6,
+      "highlights": [
+        "Established: 2022",
+        "Min Deposit: $10",
+        "Payout: 24-48 Hours",
+        "Bonus: 100% Welcome Bonus Up to $350 Double Tier",
+        "Terms: 19+. Min deposit $10. 50x wagering. Terms apply.",
+        "Badges: Classic Casino",
+        "Payments: Visa, Skrill, Paysafecard, Neteller",
+        "Pros: Safe Microgaming jackpot network; Long standing operator trust; Clean mobile interface",
+        "Cons: 50x wagering requirement",
+        "Microgaming legacy slots",
+        "Low $10 threshold",
+        "Reliable Canadian banking"
+      ]
+    },
+    {
+      "slug": "lucky-nugget",
+      "name": "Lucky Nugget",
+      "summary": "Lowest deposit bonus: 25 Free Spins for only $1 Minimum Deposit with Mega Moolah jackpots.",
+      "licenseLabel": "Malta Gaming Authority (MGA)",
+      "licenseUrl": "https://www.luckynuggetcasino.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.5,
+      "highlights": [
+        "Established: 1998",
+        "Min Deposit: $1",
+        "Payout: 24-48 Hours",
+        "Bonus: 25 Free Spins for only $1 Minimum Deposit",
+        "Terms: 19+. Min deposit $1. 200x wagering on $1 promo spins. Terms apply.",
+        "Badges: Best $1 Min Deposit",
+        "Payments: Interac, Visa, MasterCard, Paysafecard",
+        "Pros: Play for real money with just $1; Famous Mega Moolah jackpot titles; Excellent customer support",
+        "Cons: Higher rollover on low-deposit free spin offers",
+        "Lowest deposit bonus ($1)",
+        "25 Free Spins immediately",
+        "25+ years in the industry"
+      ]
+    },
+    {
+      "slug": "casimba",
+      "name": "Casimba",
+      "summary": "King of the jungle VIP treatment with 500 Loyalty points on first deposit and 100+ studios.",
+      "licenseLabel": "Malta Gaming Authority / UKGC",
+      "licenseUrl": "https://www.casimba.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.7,
+      "highlights": [
+        "Established: 2017",
+        "Min Deposit: $20",
+        "Payout: 24 Hours",
+        "Bonus: 200% Welcome Bonus Up to $5,000 + 50 Free Spins",
+        "Terms: 19+. Min deposit $20. 35x wagering. Valid for 30 days. Terms apply.",
+        "Badges: High Roller Choice",
+        "Payments: Interac, Visa, MasterCard, Neteller, Skrill, Paysafecard",
+        "Pros: 100+ game studios represented; Generous 35x playthrough condition; Fast Interac deposits & cashouts",
+        "Cons: Table games contribute reduced percentage",
+        "King of the jungle VIP treatment",
+        "500 Loyalty points on first deposit",
+        "Over 100 top tier software providers"
+      ]
+    },
+    {
+      "slug": "7bit",
+      "name": "7Bit",
+      "summary": "Retro arcade neon design with weekly reload, Monday cashback, and instant crypto transactions.",
+      "licenseLabel": "Curacao eGaming License",
+      "licenseUrl": "https://www.7bitcasino.com",
+      "verifiedAt": "2026-09-01T12:00:00.000Z",
+      "rating": 4.7,
+      "highlights": [
+        "Established: 2017",
+        "Min Deposit: $20",
+        "Payout: Instant - 10 Minutes",
+        "Bonus: 325% Welcome Pack Up to $10,800 + 250 Free Spins",
+        "Terms: 19+. Min deposit $20. 40x bonus rollover. Terms apply.",
+        "Badges: Top Crypto Match",
+        "Payments: MasterCard, Visa, Maestro, Neosurf, Bitcoin, Crypto",
+        "Pros: Stunning retro arcade styling; Immediate automated crypto withdrawals; Extensive tournament ladder",
+        "Cons: Fiat payment options have small transaction fees",
+        "Retro arcade neon design",
+        "Weekly reload & Monday cashback",
+        "Instant crypto transactions"
+      ]
+    }
+  ],
+  "offers": [],
+  "redirects": []
+}

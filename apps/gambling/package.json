@@ -1,0 +1,38 @@
+{
+  "name": "@casino/gambling",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3004",
+    "build": "next build",
+    "start": "next start -p 3004",
+    "sync:snapshot": "tsx scripts/sync-snapshot.ts",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@casino/contracts": "workspace:*",
+    "@fontsource/inter": "^5.1.1",
+    "@payloadcms/live-preview-react": "3.88.0",
+    "clsx": "^2.1.1",
+    "next": "16.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "server-only": "^0.0.1",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.1",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  },
+  "packageManager": "pnpm@11.9.0"
+}
