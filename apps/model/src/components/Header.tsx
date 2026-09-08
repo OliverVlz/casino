@@ -42,6 +42,13 @@ export function Header() {
           >
             Bonuses
           </Link>
+          <Link
+            href="/tunnel"
+            aria-current={pathname === '/tunnel' ? 'page' : undefined}
+            onClick={() => setOpen(false)}
+          >
+            Tunnel Hero
+          </Link>
           <Link href="/#guides" onClick={() => setOpen(false)}>
             The journal
           </Link>

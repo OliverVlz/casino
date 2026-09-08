@@ -1,27 +1,27 @@
-'use client'
+'use client';
 import { useEffect, useRef, useState } from 'react';
 import { draw, effect, frame, init, sampler, surface, target, uniforms } from 'vgpu';
 
 import './AeroShards.css';
 
-const PLACEMENTS: Record<string, number> = { right: 0, left: 1, center: 2, full: 3 };
-const MATERIALS: Record<string, number> = { pearl: 0, chrome: 1, satin: 2 };
-const INTERACTIONS: Record<string, number> = { none: 0, repel: 1, attract: 2 };
-const EFFECTS: Record<string, number> = { none: 0, dither: 1, ascii: 2 };
-const FLOWS: Record<string, number> = { stream: 0, vortex: 1, ribbon: 2 };
+const PLACEMENTS = { right: 0, left: 1, center: 2, full: 3 };
+const MATERIALS = { pearl: 0, chrome: 1, satin: 2 };
+const INTERACTIONS = { none: 0, repel: 1, attract: 2 };
+const EFFECTS = { none: 0, dither: 1, ascii: 2 };
+const FLOWS = { stream: 0, vortex: 1, ribbon: 2 };
 const RIPPLE_SPEED = 4.2;
 const RIPPLE_TAIL = 1.8;
-const MATERIAL_PRESETS: Record<string, { roughness: number; brightness: number; glow: number; highlightMix: number }> = {
+const MATERIAL_PRESETS = {
   pearl: { roughness: 0.46, brightness: 0.92, glow: 0.54, highlightMix: 0.78 },
   chrome: { roughness: 0.1, brightness: 1.12, glow: 0.38, highlightMix: 0.9 },
   satin: { roughness: 0.74, brightness: 0.84, glow: 0.42, highlightMix: 0.66 }
 };
-const DETAIL_PRESETS: Record<string, { count: number; size: number }> = {
+const DETAIL_PRESETS = {
   bold: { count: 0.58, size: 1.32 },
   balanced: { count: 1, size: 0.96 },
   fine: { count: 1.15, size: 0.7 }
 };
-const QUALITY_PRESETS: Record<string, { count: number; dpr: number; supersamplePixels: number }> = {
+const QUALITY_PRESETS = {
   low: { count: 1900, dpr: 1.5, supersamplePixels: 3000000 },
   medium: { count: 3200, dpr: 2, supersamplePixels: 6000000 },
   high: { count: 4600, dpr: 2, supersamplePixels: 8000000 }
@@ -36,21 +36,19 @@ const FRAME_STATES = {
   partial: { interval: 1000 / 12, continuous: false }
 };
 
-const resolveFrameInterval = (frameState: { interval: number; continuous: boolean }, refreshInterval: number) =>
+const resolveFrameInterval = (frameState, refreshInterval) =>
   frameState.continuous ? Math.max(frameState.interval, refreshInterval) : frameState.interval;
 
-const advanceFrameDeadline = (timestamp: number, deadline: number, interval: number, reset: boolean) => {
+const advanceFrameDeadline = (timestamp, deadline, interval, reset) => {
   const nextDeadline = deadline + interval;
   return reset || nextDeadline <= timestamp - 0.5 ? timestamp + interval : nextDeadline;
 };
 
-const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
-const layoutVector = (placement: number) => [0, 1, 2, 3].map(index => (index === placement ? 1 : 0));
+const createFormation = flow => ({ weights: layoutVector(flow), velocity: [0, 0, 0, 0] });
 
-const createFormation = (flow: number) => ({ weights: layoutVector(flow), velocity: [0, 0, 0, 0] });
-
-const advanceFormation = (state: { weights: number[]; velocity: number[] }, flow: number, elapsed: number, duration: number, frozen: boolean) => {
+const advanceFormation = (state, flow, elapsed, duration, frozen) => {
   const goal = layoutVector(flow);
   if (frozen) {
     state.weights = goal;
@@ -71,7 +69,7 @@ const advanceFormation = (state: { weights: number[]; velocity: number[] }, flow
   }
 };
 
-const resolvePathLength = (aspect: number, weights: number[]) => {
+const resolvePathLength = (aspect, weights) => {
   const side = 2.65 + 0.61 * aspect + 0.09 * aspect * aspect;
   const center = 2.3 + 2 * aspect + 0.35 * aspect * aspect;
   const full = Math.hypot(2.44 * aspect, Math.sqrt(5));
@@ -81,9 +79,9 @@ const resolvePathLength = (aspect: number, weights: number[]) => {
     : side * (weights[0] + weights[1]) + center * weights[2] + full * weights[3];
 };
 
-const createHold = () => ({ pointerId: null as number | null, elapsed: 0, amount: 0, velocity: 0, phase: 0 });
+const createHold = () => ({ pointerId: null, elapsed: 0, amount: 0, velocity: 0, phase: 0 });
 
-const advanceHold = (hold: ReturnType<typeof createHold>, elapsed: number, disabled: boolean) => {
+const advanceHold = (hold, elapsed, disabled) => {
   if (disabled) {
     hold.pointerId = null;
     hold.elapsed = 0;
@@ -110,14 +108,14 @@ const advanceHold = (hold: ReturnType<typeof createHold>, elapsed: number, disab
   if (hold.amount > 0) hold.phase += elapsed * (0.35 + hold.amount * 0.5);
 };
 
-const resetPointerMotion = (pointer: any) => {
+const resetPointerMotion = pointer => {
   pointer.velocity ??= [0, 0];
   pointer.velocity[0] = 0;
   pointer.velocity[1] = 0;
   pointer.presenceVelocity = 0;
 };
 
-const advancePointer = (pointer: any, elapsed: number) => {
+const advancePointer = (pointer, elapsed) => {
   if (elapsed <= 0) return;
 
   // Exact critically damped motion keeps velocity continuous through direction changes.
@@ -149,7 +147,7 @@ const advancePointer = (pointer: any, elapsed: number) => {
 
 const createRipples = () => Array.from({ length: 4 }, () => ({ origin: [0.5, 0.5], age: 0, duration: 0, strength: 0 }));
 
-const startRipple = (ripples: any[], origin: number[], aspect: number, strength = 1) => {
+const startRipple = (ripples, origin, aspect, strength = 1) => {
   // Preserve waves already in flight; rapid clicks never reset a visible wave.
   const ripple = ripples.find(value => value.strength === 0);
   if (!ripple) return false;
@@ -162,7 +160,7 @@ const startRipple = (ripples: any[], origin: number[], aspect: number, strength 
   return true;
 };
 
-const advanceRipples = (ripples: any[], elapsed: number, disabled: boolean) => {
+const advanceRipples = (ripples, elapsed, disabled) => {
   for (const ripple of ripples) {
     if (disabled) ripple.strength = 0;
     if (!ripple.strength) continue;
@@ -171,7 +169,9 @@ const advanceRipples = (ripples: any[], elapsed: number, disabled: boolean) => {
   }
 };
 
-const mixColor = (from: number[], to: number[], amount: number) => [
+const layoutVector = placement => [0, 1, 2, 3].map(index => (index === placement ? 1 : 0));
+
+const mixColor = (from, to, amount) => [
   from[0] + (to[0] - from[0]) * amount,
   from[1] + (to[1] - from[1]) * amount,
   from[2] + (to[2] - from[2]) * amount,
@@ -211,6 +211,7 @@ struct VertexOut {
   @location(0) @interpolate(flat, first) baseAlpha: vec4f,
   @location(1) @interpolate(flat, first) creaseColor: vec3f,
   @location(2) localCoord: vec2f,
+  @location(3) @interpolate(flat, first) cardId: f32,
 }
 
 @group(0) @binding(0) var<uniform> view: ViewParams;
@@ -394,7 +395,7 @@ fn mobilePath(seedPhase: f32, distance: f32, aspect: f32) -> PathSample {
   return sample;
 }
 
-fn weightedPath(seedPhase: f32, phaseOffset: f32, aspect: f32, weights: any) -> PathSample {
+fn weightedPath(seedPhase: f32, phaseOffset: f32, aspect: f32, weights: vec4f) -> PathSample {
   // Every placement samples the same point along the stream, including its wrap seam.
   let phase = fract(seedPhase + phaseOffset);
   var result: PathSample;
@@ -472,14 +473,15 @@ fn rippleDisplacement(position: vec3f, pulse: vec4f) -> vec4f {
 }
 
 fn shardVertex(index: u32) -> vec3f {
-  let fold = 0.34;
+  let w = 0.62;
+  let h = 0.92;
   let vertices = array<vec3f, 6>(
-    vec3f(0.0, 1.0, fold),
-    vec3f(-0.72, 0.0, 0.0),
-    vec3f(0.0, -1.0, fold),
-    vec3f(0.0, 1.0, fold),
-    vec3f(0.0, -1.0, fold),
-    vec3f(0.72, 0.0, 0.0)
+    vec3f(-w,  h, 0.0),
+    vec3f(-w, -h, 0.0),
+    vec3f( w, -h, 0.0),
+    vec3f(-w,  h, 0.0),
+    vec3f( w, -h, 0.0),
+    vec3f( w,  h, 0.0)
   );
   return vertices[index % 6u];
 }
@@ -623,8 +625,8 @@ fn vs_main(
   let depthScale = mix(0.56, 1.58, clamp(renderPosition.z * 0.62 + 0.5, 0.0, 1.0));
   let scaleShape = 0.46 + seedScale * 0.58 + pow(seedScale, 12.0) * 1.55;
   let size = view.viewport.y * scaleShape * depthScale * (1.0 - view.gather.z * 0.3);
-  let width = size * 0.72;
-  let lengthScale = size * 1.26 * view.effects.z;
+  let width = size * 0.85;
+  let lengthScale = size * 1.25 * view.effects.z;
   let world = renderPosition
     + direction * local.y * lengthScale
     + bankedSide * local.x * width
@@ -640,9 +642,8 @@ fn vs_main(
   var shardAlpha = 0.0;
 
   if (corner == 0u) {
-    let facetSide = select(-1.0, 1.0, triangle == 1u);
-    let localNormal = vec3f(facetSide * 0.394903, 0.0, 0.918723);
-    let normal = bankedSide * localNormal.x + bankedFacing * localNormal.z;
+    let localNormal = vec3f(0.0, 0.0, 1.0);
+    let normal = bankedFacing;
     let viewDirection = normalize(vec3f(-renderPosition.xy * 0.08, 1.0));
     let pointerShift = vec2f(view.light.w, view.shape.w);
     let keyDirection = view.light.xyz;
@@ -667,7 +668,7 @@ fn vs_main(
     let fresnelBase = 1.0 - max(dot(normal, viewDirection), 0.0);
     let fresnelSquared = fresnelBase * fresnelBase;
     let fresnel = fresnelSquared * fresnelSquared;
-    let facet = mix(0.76, 1.0, smoothstep(-0.08, 0.08, normal.x));
+    let facet = 1.0;
     let depthFog = smoothstep(-0.68, 0.58, renderPosition.z);
     let depthTint = mix(view.accentColor.rgb * 0.52, view.baseColor.rgb, depthFog);
     var color = depthTint * (0.1 + diffuse * 0.3) * facet;
@@ -714,22 +715,64 @@ fn vs_main(
   out.baseAlpha = vec4f(mapped, shardAlpha);
   out.creaseColor = mappedCrease - mapped;
   out.localCoord = shapeLocal.xy;
+  out.cardId = f32(instanceIndex % 4u);
   return out;
 }
 
 @fragment
 fn fs_main(in: VertexOut) -> @location(0) vec4f {
-  let crease = (1.0 - smoothstep(0.015, 0.11, abs(in.localCoord.x)))
-    * (1.0 - smoothstep(0.78, 1.0, abs(in.localCoord.y)));
-  var coverage = 1.0;
-  if (view.effects.y > 0.001) {
-    let diamondDistance = 1.0 - abs(in.localCoord.y) - abs(in.localCoord.x) / 0.72;
-    let edgeWidth = max(fwidth(diamondDistance) * view.effects.y, 0.0001);
-    coverage = smoothstep(0.0, edgeWidth, diamondDistance);
+  let uv = in.localCoord;
+  let cardHalfW = 0.62;
+  let cardHalfH = 0.92;
+  let cornerRadius = 0.09;
+
+  // Box signed distance field with rounded corners
+  let d = abs(uv) - vec2f(cardHalfW - cornerRadius, cardHalfH - cornerRadius);
+  let dist = length(max(d, vec2f(0.0))) + min(max(d.x, d.y), 0.0) - cornerRadius;
+  let edgeWidth = max(fwidth(dist), 0.001);
+  let cardMask = 1.0 - smoothstep(0.0, edgeWidth, dist);
+
+  // Card gold border
+  let innerDist = dist + 0.045;
+  let borderMask = clamp(cardMask - (1.0 - smoothstep(0.0, edgeWidth, innerDist)), 0.0, 1.0);
+
+  // Card central emblem / suit shape
+  let suitUV = uv / 0.32;
+  var suitShape = 0.0;
+  let suitType = u32(in.cardId);
+
+  if (suitType == 0u) {
+    // Diamond suit (♦)
+    let dSuit = abs(suitUV.x) * 1.1 + abs(suitUV.y) * 0.85;
+    suitShape = 1.0 - smoothstep(0.48, 0.54, dSuit);
+  } else if (suitType == 1u) {
+    // Spade / Heart suit (♠/♥)
+    let r = length(suitUV + vec2f(0.0, 0.08));
+    let cusp = 1.0 - smoothstep(0.45, 0.52, r + abs(suitUV.x) * 0.35);
+    suitShape = cusp;
+  } else if (suitType == 2u) {
+    // Club suit (♣) - 3 connected rounded lobes
+    let c1 = length(suitUV - vec2f(0.0, 0.18));
+    let c2 = length(suitUV - vec2f(-0.16, -0.1));
+    let c3 = length(suitUV - vec2f(0.16, -0.1));
+    let lobe = min(min(c1, c2), c3);
+    suitShape = 1.0 - smoothstep(0.2, 0.25, lobe);
+  } else {
+    // Crown / Casino emblem
+    let bar = 1.0 - smoothstep(0.35, 0.42, abs(suitUV.x) + abs(suitUV.y));
+    suitShape = bar;
   }
-  let mapped = in.baseAlpha.rgb + in.creaseColor * crease;
-  let coveredAlpha = in.baseAlpha.a * coverage;
-  return vec4f(mapped * coveredAlpha, coveredAlpha);
+
+  // Obsidian card body with champagne gold border and bright suit
+  let cardBody = in.baseAlpha.rgb * 0.85 + vec3f(0.04, 0.03, 0.05);
+  let goldColor = view.highlightColor.rgb * 1.35 + vec3f(0.15, 0.12, 0.05);
+  let suitColor = mix(view.accentColor.rgb * 1.5, goldColor, 0.65);
+
+  var finalColor = mix(cardBody, goldColor, borderMask * 0.9);
+  finalColor = mix(finalColor, suitColor, clamp(suitShape * 0.85, 0.0, 1.0));
+
+  let coveredAlpha = in.baseAlpha.a * cardMask;
+  return vec4f(finalColor * coveredAlpha, coveredAlpha);
 }
 `;
 
@@ -792,29 +835,31 @@ fn fs_main(@location(0) uv: vec2f) -> @location(0) vec4f {
 }
 `;
 
+// Compact 5×7 glyphs keep ASCII self-contained: no font downloads, canvas atlas, or readbacks.
+// Space, punctuation, directional strokes, and dense glyphs cover the six shape samples.
 const ASCII_GLYPHS = [
-  [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 12, 12],
-  [0, 12, 12, 0, 12, 12, 0],
-  [0, 0, 0, 31, 0, 0, 0],
-  [0, 0, 31, 0, 31, 0, 0],
-  [4, 4, 4, 4, 4, 4, 4],
-  [1, 2, 2, 4, 8, 8, 16],
-  [16, 8, 8, 4, 2, 2, 1],
-  [0, 4, 4, 31, 4, 4, 0],
-  [0, 21, 14, 31, 14, 21, 0],
-  [0, 17, 10, 4, 10, 17, 0],
-  [2, 4, 8, 16, 8, 4, 2],
-  [8, 4, 2, 1, 2, 4, 8],
-  [3, 4, 8, 8, 8, 4, 3],
-  [24, 4, 2, 2, 2, 4, 24],
-  [0, 0, 14, 17, 17, 14, 0],
-  [14, 17, 17, 17, 17, 17, 14],
-  [10, 10, 31, 10, 31, 10, 10],
-  [14, 17, 23, 21, 23, 16, 14],
-  [17, 27, 21, 21, 17, 17, 17],
-  [17, 17, 17, 21, 21, 27, 17],
-  [14, 17, 17, 31, 17, 17, 17]
+  [0, 0, 0, 0, 0, 0, 0], // space
+  [0, 0, 0, 0, 0, 12, 12], // .
+  [0, 12, 12, 0, 12, 12, 0], // :
+  [0, 0, 0, 31, 0, 0, 0], // -
+  [0, 0, 31, 0, 31, 0, 0], // =
+  [4, 4, 4, 4, 4, 4, 4], // |
+  [1, 2, 2, 4, 8, 8, 16], // /
+  [16, 8, 8, 4, 2, 2, 1], // backslash
+  [0, 4, 4, 31, 4, 4, 0], // +
+  [0, 21, 14, 31, 14, 21, 0], // *
+  [0, 17, 10, 4, 10, 17, 0], // x
+  [2, 4, 8, 16, 8, 4, 2], // <
+  [8, 4, 2, 1, 2, 4, 8], // >
+  [3, 4, 8, 8, 8, 4, 3], // (
+  [24, 4, 2, 2, 2, 4, 24], // )
+  [0, 0, 14, 17, 17, 14, 0], // o
+  [14, 17, 17, 17, 17, 17, 14], // O
+  [10, 10, 31, 10, 31, 10, 10], // #
+  [14, 17, 23, 21, 23, 16, 14], // @
+  [17, 27, 21, 21, 17, 17, 17], // M
+  [17, 17, 17, 21, 21, 27, 17], // W
+  [14, 17, 17, 31, 17, 17, 17] // A
 ];
 const ASCII_SAMPLES = [
   [0.28, 0.26],
@@ -858,6 +903,7 @@ fn sampleSource(pixel: vec2f) -> vec3f {
   return textureSampleLevel(sourceTexture, sourceSampler, pixel / style.viewport.xy, 0.0).rgb;
 }
 fn inkLevel(color: vec3f) -> f32 {
+  // Measure contrast against the chosen background, not black: white stays empty too.
   return clamp(dot(abs(color - style.background.rgb), vec3f(0.2126, 0.7152, 0.0722)) * 2.4, 0.0, 1.0);
 }
 `;
@@ -910,6 +956,7 @@ fn fs_main(@builtin(position) pixel: vec4f) -> @location(0) vec4f {
   let gain = 1.0 / max(peak, 0.001);
   let a = vec3f(values[0], values[1], values[2]);
   let b = vec3f(values[3], values[4], values[5]);
+  // Normalize shape separately from ink color so thin, dim shards do not all select space.
   let shapeA = a * sqrt(a * gain) * gain;
   let shapeB = b * sqrt(b * gain) * gain;
   var best = 0u;
@@ -920,6 +967,7 @@ fn fs_main(@builtin(position) pixel: vec4f) -> @location(0) vec4f {
     let distance = dot(da, da) + dot(db, db);
     if (distance < bestDistance) { best = glyph; bestDistance = distance; }
   }
+  // RGB stores the scene palette; alpha is an exact byte-sized glyph index, not opacity.
   let ink = style.background.rgb + (colorSum / weightSum - style.background.rgb) * 2.2;
   return vec4f(clamp(ink, vec3f(0.0), vec3f(1.0)), f32(best) / 255.0);
 }
@@ -930,6 +978,7 @@ const STYLE_SHADER = `${STYLE_COMMON}
 const GLYPHS = array<vec2u, ${ASCII_GLYPHS.length}>(
   ${ASCII_GLYPHS.map(rows => `vec2u(${rows.slice(0, 4).reduce((sum, row, i) => sum + row * 2 ** (i * 5), 0)}u, ${rows.slice(4).reduce((sum, row, i) => sum + row * 2 ** (i * 5), 0)}u)`).join(',\n  ')}
 );
+// A centered Bayer screen distributes quantization error across a stable 4×4 grid.
 const THRESHOLDS = array<f32, 16>(
   0.03125, 0.53125, 0.15625, 0.65625, 0.78125, 0.28125, 0.90625, 0.40625,
   0.21875, 0.71875, 0.09375, 0.59375, 0.96875, 0.46875, 0.84375, 0.34375
@@ -958,6 +1007,7 @@ fn fs_main(@builtin(position) pixel: vec4f) -> @location(0) vec4f {
   }
   let info = textureLoad(asciiCells, clamp(cell, vec2i(0), vec2i(textureDimensions(asciiCells)) - 1), 0);
   let glyph = min(u32(round(info.a * 255.0)), ${ASCII_GLYPHS.length - 1}u);
+  // Integrate the compact glyph over each display pixel; keep subpixel strokes visible.
   let local = fract(cellPosition) * vec2f(6.0, 10.0) - vec2f(0.5, 1.5);
   let footprint = vec2f(6.0, 10.0) / style.viewport.zw;
   let low = local - footprint * 0.5;
@@ -1000,6 +1050,7 @@ fn hash12(value: vec2f) -> f32 {
 @fragment
 fn fs_main(@location(0) uv: vec2f, @builtin(position) pixel: vec4f) -> @location(0) vec4f {
   let background = post.background.rgb;
+  // Scene and output have identical dimensions; never filter the sharp base image.
   var scene = textureLoad(sceneTexture, vec2i(pixel.xy), 0).rgb;
 
   if (post.finishing.z > 0.000001) {
@@ -1018,6 +1069,7 @@ fn fs_main(@location(0) uv: vec2f, @builtin(position) pixel: vec4f) -> @location
   var foreground = scene - background;
   if (post.finishing.x > 0.0001) {
     let bloom = textureSampleLevel(bloomTexture, linearSampler, uv, 0.0);
+    // A colored haze remains visible on white; protect the opaque facet colors underneath.
     let haloMask = 1.0 - smoothstep(0.04, 0.4, length(foreground));
     let haloOpacity = min(bloom.a * post.finishing.x * 1.8, 0.65) * haloMask;
     let haloColor = bloom.rgb / max(bloom.a, 0.00001);
@@ -1036,35 +1088,34 @@ fn fs_main(@location(0) uv: vec2f, @builtin(position) pixel: vec4f) -> @location
 }
 `;
 
-const parseColor = (value: string, fallback: string) => {
+const parseColor = (value, fallback) => {
   const match = /^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i.exec(value);
   const source = match || /^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i.exec(fallback);
-  if (!source) return [0, 0, 0, 1];
   return [parseInt(source[1], 16) / 255, parseInt(source[2], 16) / 255, parseInt(source[3], 16) / 255, 1];
 };
 
-const resolveQuality = (canvas: HTMLCanvasElement) => {
-  const nav = navigator as any;
-  const memory = nav.deviceMemory || 6;
-  const cores = nav.hardwareConcurrency || 6;
+const resolveQuality = canvas => {
+  const memory = navigator.deviceMemory || 6;
+  const cores = navigator.hardwareConcurrency || 6;
   const cssPixels = Math.max(1, canvas.clientWidth * canvas.clientHeight);
   if (canvas.clientWidth < 640 || memory <= 4 || cores <= 4) return 'low';
   if (cssPixels <= 360000 && memory >= 8 && cores >= 12) return 'high';
   return 'medium';
 };
 
-const resolveDpr = (preset: { count: number; dpr: number; supersamplePixels: number }, canvas: HTMLCanvasElement) => {
+const resolveDpr = (preset, canvas) => {
   const cssPixels = Math.max(1, canvas.clientWidth * canvas.clientHeight);
+  // The budget limits supersampling, never the one-pixel-per-CSS-pixel base image.
   const budgetDpr = Math.sqrt(preset.supersamplePixels / cssPixels);
   return Math.max(1, Math.min(window.devicePixelRatio || 1, preset.dpr, budgetDpr));
 };
 
-const resolveBloomSize = (size: readonly [number, number] | number[], qualityLevel = 0): [number, number] => {
+const resolveBloomSize = (size, qualityLevel = 0) => {
   const bloomScale = BLOOM_SCALES[qualityLevel] ?? BLOOM_SCALES[0];
   return [Math.max(1, Math.round(size[0] * bloomScale)), Math.max(1, Math.round(size[1] * bloomScale))];
 };
 
-const createRenderGraph = (gpu: any, outputSize: readonly [number, number], bloomSize: readonly [number, number] = resolveBloomSize(outputSize)) => {
+const createRenderGraph = (gpu, outputSize, bloomSize = resolveBloomSize(outputSize)) => {
   const viewParams = uniforms(gpu, {
     viewport: [1, 0.0132, 1, 0],
     shape: [1, 1, 0.36, 0],
@@ -1103,17 +1154,17 @@ const createRenderGraph = (gpu: any, outputSize: readonly [number, number], bloo
   });
   shardDraw.set({ view: viewParams });
   const sceneTarget = target(gpu, {
-    size: [outputSize[0], outputSize[1]],
+    size: outputSize,
     format: 'rgba8unorm',
     label: 'aero-shards-scene'
   });
   const bloomTarget = target(gpu, {
-    size: [bloomSize[0], bloomSize[1]],
+    size: bloomSize,
     format: 'rgba16float',
     label: 'aero-shards-bloom'
   });
   const bloomScratchTarget = target(gpu, {
-    size: [bloomSize[0], bloomSize[1]],
+    size: bloomSize,
     format: 'rgba16float',
     label: 'aero-shards-bloom-scratch'
   });
@@ -1150,6 +1201,7 @@ const createRenderGraph = (gpu: any, outputSize: readonly [number, number], bloo
       post: postParams
     }
   });
+  // Disabled effects retain only tiny placeholders, not full-resolution render targets.
   const styleTarget = target(gpu, { size: [1, 1], format: 'rgba8unorm', label: 'aero-shards-style' });
   const asciiTarget = target(gpu, { size: [1, 1], format: 'rgba8unorm', label: 'aero-shards-ascii-cells' });
   const styleParams = uniforms(gpu, {
@@ -1187,14 +1239,14 @@ const createRenderGraph = (gpu: any, outputSize: readonly [number, number], bloo
   };
 };
 
-const configureStyle = (graph: any, settings: any, outputSize: readonly [number, number] | number[], cssSize: number[]) => {
+const configureStyle = (graph, settings, outputSize, cssSize) => {
   const mode = settings.effect;
   const signature = [mode, ...outputSize, ...cssSize, ...settings.background].join('|');
   if (signature === graph.styleSignature) return;
   graph.styleSignature = signature;
   const cellWidth = ((mode === EFFECTS.ascii ? 3.6 : 1) * outputSize[0]) / Math.max(cssSize[0], 1);
   const cellHeight = ((mode === EFFECTS.ascii ? 6 : 1) * outputSize[1]) / Math.max(cssSize[1], 1);
-  graph.styleTarget.resize(mode ? [outputSize[0], outputSize[1]] : [1, 1]);
+  graph.styleTarget.resize(mode ? outputSize : [1, 1]);
   graph.asciiTarget.resize(
     mode === EFFECTS.ascii
       ? [Math.max(1, Math.ceil(outputSize[0] / cellWidth)), Math.max(1, Math.ceil(outputSize[1] / cellHeight))]
@@ -1210,7 +1262,7 @@ const configureStyle = (graph: any, settings: any, outputSize: readonly [number,
   graph.finishEffect.set({ sceneTexture: source });
 };
 
-const prepareRenderGraph = async (graph: any, outputFormat: any) => {
+const prepareRenderGraph = async (graph, outputFormat) => {
   await Promise.all([
     graph.shardDraw.compile({ colors: [outputFormat] }),
     graph.shardDraw.compile(graph.sceneTarget),
@@ -1222,40 +1274,6 @@ const prepareRenderGraph = async (graph: any, outputFormat: any) => {
     graph.styleEffect.compile(graph.styleTarget)
   ]);
 };
-
-export interface AeroShardsProps {
-  backgroundColor?: string;
-  shardColor?: string;
-  accentColor?: string;
-  placement?: 'right' | 'left' | 'center' | 'full';
-  flow?: 'stream' | 'vortex' | 'ribbon';
-  material?: 'pearl' | 'chrome' | 'satin';
-  detail?: 'bold' | 'balanced' | 'fine';
-  effect?: 'none' | 'dither' | 'ascii';
-  scale?: number;
-  spread?: number;
-  depth?: number;
-  speed?: number;
-  spin?: number;
-  interaction?: 'none' | 'repel' | 'attract';
-  density?: number;
-  shardSize?: number;
-  stretch?: number;
-  turbulence?: number;
-  glow?: number;
-  edgeSoftness?: number;
-  bloom?: number;
-  grain?: number;
-  chromaticAberration?: number;
-  transitionDuration?: number;
-  interactionRadius?: number;
-  interactionStrength?: number;
-  rippleIntensity?: number;
-  holdToGather?: boolean;
-  paused?: boolean;
-  className?: string;
-  onError?: (error: Error) => void;
-}
 
 export default function AeroShards({
   backgroundColor = '#120F17',
@@ -1288,13 +1306,13 @@ export default function AeroShards({
   holdToGather = true,
   paused = false,
   className = '',
-  onError
-}: AeroShardsProps) {
-  const rootRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  onError = undefined
+}) {
+  const rootRef = useRef(null);
+  const canvasRef = useRef(null);
   const onErrorRef = useRef(onError);
-  const settingsRef = useRef<any>(null);
-  const wakeRef = useRef<() => void>(() => {});
+  const settingsRef = useRef(null);
+  const wakeRef = useRef(() => {});
   const pointerRef = useRef({
     raw: [0.5, 0.5],
     position: [0.5, 0.5],
@@ -1311,6 +1329,7 @@ export default function AeroShards({
   const resolvedMaterial = MATERIAL_PRESETS[material] || MATERIAL_PRESETS.pearl;
   const resolvedDetail = DETAIL_PRESETS[detail] || DETAIL_PRESETS.balanced;
   const resolvedEffect = EFFECTS[effect] ?? EFFECTS.none;
+  // Stylized marks need enough screen area to resolve; preserve roughly the same field coverage.
   const effectDetail = resolvedEffect === EFFECTS.none ? 1 : 0.4;
   const effectSize = resolvedEffect === EFFECTS.none ? 1 : 1.75;
   const resolvedScale = clamp(scale, 0.5, 2.5);
@@ -1363,6 +1382,7 @@ export default function AeroShards({
     edgeSoftness: resolvedEdgeSoftness,
     bloom: resolvedBloom,
     grain: resolvedGrain,
+    // Keep RGB separation below the scale of the glyph strokes and dither screen.
     chromaticAberration: resolvedChromaticAberration * (resolvedEffect === EFFECTS.none ? 1 : 0.2),
     exposure: 1.12 + (0.96 - 1.12) * lightSurface,
     lightSurface,
@@ -1422,13 +1442,13 @@ export default function AeroShards({
 
     let disposed = false;
     let runtimeFailed = false;
-    let gpu: any;
+    let gpu;
     let animationFrameId = 0;
     let timeoutId = 0;
-    let unsubscribeResize: (() => void) | undefined;
-    let unsubscribeGpuError: (() => void) | undefined;
-    let visibilityObserver: IntersectionObserver | undefined;
-    let resizeObserver: ResizeObserver | undefined;
+    let unsubscribeResize;
+    let unsubscribeGpuError;
+    let visibilityObserver;
+    let resizeObserver;
     let visible = true;
     let visibilityRatio = 1;
     let needsRender = true;
@@ -1442,7 +1462,7 @@ export default function AeroShards({
     };
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    const reportFailure = (error: any) => {
+    const reportFailure = error => {
       if (disposed || runtimeFailed) return;
       runtimeFailed = true;
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
@@ -1463,7 +1483,7 @@ export default function AeroShards({
       boundsDirty = false;
     };
 
-    const pointFromClient = (clientX: number, clientY: number) => {
+    const pointFromClient = (clientX, clientY) => {
       if (boundsDirty) updateBounds();
       if (bounds.width <= 0 || bounds.height <= 0) return null;
       const x = (clientX - bounds.left) / bounds.width;
@@ -1472,7 +1492,7 @@ export default function AeroShards({
       return [x, y];
     };
 
-    const updatePointerTarget = (next: number[]) => {
+    const updatePointerTarget = next => {
       const pointer = pointerRef.current;
       if (!pointer.initialized || (!pointer.active && pointer.presence === 0)) {
         pointer.raw = [...next];
@@ -1496,7 +1516,7 @@ export default function AeroShards({
       wakeRenderer();
     };
 
-    const handlePointerMove = (event: PointerEvent) => {
+    const handlePointerMove = event => {
       const settings = settingsRef.current;
       if (!event.isPrimary || !visible || settings.interaction === INTERACTIONS.none) return;
       const next = pointFromClient(event.clientX, event.clientY);
@@ -1512,9 +1532,10 @@ export default function AeroShards({
       wakeRenderer();
     };
 
-    const handlePointerDown = (event: PointerEvent) => {
+    const handlePointerDown = event => {
       const settings = settingsRef.current;
       if (!event.isPrimary || event.button !== 0 || !visible || settings.interaction === INTERACTIONS.none) return;
+      // Never hijack links, form controls, or editable content layered above a background.
       if (
         event.target instanceof Element &&
         event.target.closest('a, button, input, textarea, select, [role="button"], [contenteditable="true"]')
@@ -1536,7 +1557,7 @@ export default function AeroShards({
       wakeRenderer();
     };
 
-    const handlePointerEnd = (event: PointerEvent) => {
+    const handlePointerEnd = event => {
       const hold = holdRef.current;
       if (hold.pointerId === event.pointerId) {
         hold.pointerId = null;
@@ -1611,11 +1632,7 @@ export default function AeroShards({
         if (disposed) return gpu.dispose();
         unsubscribeGpuError = gpu.onError(reportFailure);
 
-        const navGpu = (navigator as any).gpu;
-        if (!navGpu) {
-          throw new Error('WebGPU not supported on this browser');
-        }
-        const outputFormat = navGpu.getPreferredCanvasFormat();
+        const outputFormat = navigator.gpu.getPreferredCanvasFormat();
         const output = surface(gpu, canvas, {
           dpr: resolveDpr(preset, canvas),
           autoResize: false,
@@ -1652,7 +1669,7 @@ export default function AeroShards({
         let refreshSampleCount = 0;
         let refreshSampleIndex = 0;
 
-        const resolveFrameState = (now: number) => {
+        const resolveFrameState = now => {
           const pointer = pointerRef.current;
           const pointerTransitioning = Math.abs(pointer.presence - pointer.active) > 0.004;
           if (
@@ -1677,8 +1694,8 @@ export default function AeroShards({
           const height = Math.max(1, output.size[1]);
           const bloomSize = resolveBloomSize([canvas.clientWidth, canvas.clientHeight], qualityLevel);
           graph.sceneTarget.resize([width, height]);
-          graph.bloomTarget.resize([bloomSize[0], bloomSize[1]]);
-          graph.bloomScratchTarget.resize([bloomSize[0], bloomSize[1]]);
+          graph.bloomTarget.resize(bloomSize);
+          graph.bloomScratchTarget.resize(bloomSize);
           graph.blurParamsX.set({ direction: [1 / bloomSize[0], 0, 0, 0] });
           graph.blurParamsY.set({ direction: [0, 1 / bloomSize[1], 0, 0] });
           graph.postParams.set({
@@ -1690,7 +1707,7 @@ export default function AeroShards({
         const resizeOutput = () => {
           updateBounds();
           const dpr = resolveDpr(preset, canvas);
-          const nextSize: [number, number] = [
+          const nextSize = [
             Math.max(1, Math.round(canvas.clientWidth * dpr)),
             Math.max(1, Math.round(canvas.clientHeight * dpr))
           ];
@@ -1709,7 +1726,7 @@ export default function AeroShards({
         });
         resizeObserver.observe(canvas);
 
-        const setRuntimeQuality = (nextLevel: number, now: number, frameState: any) => {
+        const setRuntimeQuality = (nextLevel, now, frameState) => {
           const clampedLevel = Math.max(0, Math.min(RUNTIME_QUALITY.length - 1, nextLevel));
           if (clampedLevel === runtimeQualityLevel) return;
           runtimeQualityLevel = clampedLevel;
@@ -1725,7 +1742,7 @@ export default function AeroShards({
           }
         };
 
-        const renderFrame = (currentFrame: any) => {
+        const renderFrame = currentFrame => {
           const settings = settingsRef.current;
           const frozen = settings.paused || reduceMotion.matches || settings.speed <= 0.0001;
           const elapsed =
@@ -1847,35 +1864,35 @@ export default function AeroShards({
             settings.chromaticAberration > 0.000001;
 
           if (!postEnabled) {
-            currentFrame.pass({ target: output, clear: settings.background }, (pass: any) => {
+            currentFrame.pass({ target: output, clear: settings.background }, pass => {
               pass.draw(graph.shardDraw, { instances: activeCount });
             });
           } else {
-            currentFrame.pass({ target: graph.sceneTarget, clear: settings.background }, (pass: any) => {
+            currentFrame.pass({ target: graph.sceneTarget, clear: settings.background }, pass => {
               pass.draw(graph.shardDraw, { instances: activeCount });
             });
             if (settings.effect === EFFECTS.ascii) {
-              currentFrame.pass({ target: graph.asciiTarget, clear: [0, 0, 0, 0] }, (pass: any) => {
+              currentFrame.pass({ target: graph.asciiTarget, clear: [0, 0, 0, 0] }, pass => {
                 pass.draw(graph.asciiEffect);
               });
             }
             if (settings.effect !== EFFECTS.none) {
-              currentFrame.pass({ target: graph.styleTarget, clear: settings.background }, (pass: any) => {
+              currentFrame.pass({ target: graph.styleTarget, clear: settings.background }, pass => {
                 pass.draw(graph.styleEffect);
               });
             }
             if (settings.bloom > 0.0001) {
-              currentFrame.pass({ target: graph.bloomTarget, clear: [0, 0, 0, 1] }, (pass: any) => {
+              currentFrame.pass({ target: graph.bloomTarget, clear: [0, 0, 0, 1] }, pass => {
                 pass.draw(graph.bloomEffect);
               });
-              currentFrame.pass({ target: graph.bloomScratchTarget, clear: [0, 0, 0, 1] }, (pass: any) => {
+              currentFrame.pass({ target: graph.bloomScratchTarget, clear: [0, 0, 0, 1] }, pass => {
                 pass.draw(graph.bloomBlurX);
               });
-              currentFrame.pass({ target: graph.bloomTarget, clear: [0, 0, 0, 1] }, (pass: any) => {
+              currentFrame.pass({ target: graph.bloomTarget, clear: [0, 0, 0, 1] }, pass => {
                 pass.draw(graph.bloomBlurY);
               });
             }
-            currentFrame.pass({ target: output, clear: settings.background }, (pass: any) => {
+            currentFrame.pass({ target: output, clear: settings.background }, pass => {
               pass.draw(graph.finishEffect);
             });
           }
@@ -1893,7 +1910,7 @@ export default function AeroShards({
           animationFrameId = requestAnimationFrame(scheduleFrame);
         };
 
-        const scheduleSleep = (targetTimestamp: number) => {
+        const scheduleSleep = targetTimestamp => {
           if (disposed || runtimeFailed || timeoutId || animationFrameId || !visible || document.hidden) return;
           const delay = Math.max(0, targetTimestamp - performance.now() - 10);
           timeoutId = window.setTimeout(() => {
@@ -1902,7 +1919,7 @@ export default function AeroShards({
           }, delay);
         };
 
-        const scheduleFrame = (timestamp: number) => {
+        const scheduleFrame = timestamp => {
           animationFrameId = 0;
           if (disposed || runtimeFailed || !visible || document.hidden) return;
 
@@ -1983,6 +2000,7 @@ export default function AeroShards({
           }
 
           const nextState = resolveFrameState(performance.now());
+          // Carry fractional RAF deadlines so 90/144 Hz displays still average 60 fps.
           nextPresentationTimestamp = advanceFrameDeadline(
             timestamp,
             dueTimestamp,
