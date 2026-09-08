@@ -49,6 +49,12 @@ uniform float uGrainIntensity;
 uniform float uLightMode;
 out vec4 fragColor;
 
+float sdSegment(vec2 p, vec2 a, vec2 b) {
+  vec2 pa = p - a, ba = b - a;
+  float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0);
+  return length(pa - ba * h);
+}
+
 void mainImage(out vec4 o, in vec2 fragCoord) {
   float size = uSize * 2.0;
   float flowDir = uFlowDir;
@@ -92,25 +98,147 @@ void mainImage(out vec4 o, in vec2 fragCoord) {
   float wireMask = smoothstep(cableThick, cableThick - 0.05, distToCore);
   float rimGlow = smoothstep(borderWeight, 0.0, abs(distToCore - cableThick));
 
-  float pulseThick = cableThick * uPulseWidth;
-  float pulseMask = smoothstep(pulseThick, pulseThick - 0.05 * uPulseWidth, distToCore);
+  // --- PREMIUM CASINO NEON PLAYING CARDS ---
+  float cardHalfW = cableThick * 1.55 * uPulseWidth;
+  float cardHalfH = uPulseLength * 0.52; // Proper 2.5:3.5 playing card aspect ratio
+  float cardCorner = 0.038;
+  vec2 cardUV = vec2(gvX, pulseFact - 0.5);
 
-  float pulseDist = abs(pulseFact - 0.5);
-  float pulseTotal = uPulseLength;
-  float pulseCore = pulseTotal * (1.0 - uPulseBlend);
-  float pulseLo = min(pulseCore, pulseTotal - max(fwidth(scroll), 1e-4));
-  float dataPulse = 1.0 - smoothstep(pulseLo, pulseTotal, pulseDist);
+  // Card rounded rectangle signed distance field
+  vec2 dCard = abs(cardUV) - vec2(cardHalfW - cardCorner, cardHalfH - cardCorner);
+  float distCard = length(max(dCard, vec2(0.0))) + min(max(dCard.x, dCard.y), 0.0) - cardCorner;
+  float cardEdge = max(fwidth(distCard), 0.0018);
+  float cardMask = 1.0 - smoothstep(0.0, cardEdge, distCard);
 
+  // Outer neon glow around the card perimeter
+  float cardOuterGlow = exp(-max(distCard, 0.0) * 45.0) * (1.0 - cardMask);
+
+  // Double gold/neon border
+  float innerCardDist = distCard + 0.018;
+  float cardOuterBorder = clamp(cardMask - (1.0 - smoothstep(0.0, cardEdge, innerCardDist)), 0.0, 1.0);
+  float pinstripeDist = distCard + 0.036;
+  float pinstripe = clamp((1.0 - smoothstep(0.0, cardEdge, pinstripeDist + 0.008)) - (1.0 - smoothstep(0.0, cardEdge, pinstripeDist)), 0.0, 1.0);
+
+  // Casino Guilloche / Diamond geometric pattern on card back/face
+  vec2 gridUV = cardUV / vec2(cardHalfW, cardHalfH);
+  float lattice = sin(gridUV.x * 24.0 + gridUV.y * 16.0) * sin(gridUV.x * 24.0 - gridUV.y * 16.0);
+  float cardPattern = smoothstep(0.4, 0.7, abs(lattice)) * 0.18;
+
+  // Suit Selection: 0 = Spades (♠), 1 = Hearts (♥), 2 = Diamonds (♦), 3 = Clubs (♣)
+  float suitType = mod(cableID + floor(scroll), 4.0);
+
+  // Central Suit Emblem (Accurate SVG-quality procedural geometry)
+  vec2 suitUV = cardUV / vec2(cardHalfW * 0.48, cardHalfH * 0.42);
+  float suitShape = 0.0;
+
+  // Bounded suit box check to strictly prevent any shape from escaping center of card
+  if (abs(suitUV.x) < 0.95 && abs(suitUV.y) < 0.95) {
+    if (suitType < 0.5) {
+      // ♠ SPADE: Upward cone + lower twin lobes + pedestal stem
+      vec2 p = vec2(suitUV.x, -suitUV.y);
+      float dHeadCone = max(dot(vec2(abs(p.x), p.y + 0.38), vec2(0.804, -0.594)), max(-0.38 - p.y, p.y - 0.06));
+      float dHeadLobes = length(vec2(abs(p.x) - 0.15, p.y - 0.06)) - 0.19;
+      float dHead = min(dHeadLobes, dHeadCone);
+      float stemHalfW = 0.035 + (-suitUV.y - 0.08) * 0.40;
+      float dStem = max(abs(suitUV.x) - stemHalfW, max(-suitUV.y - 0.42, suitUV.y + 0.08));
+      float dSpade = min(dHead, dStem);
+      suitShape = 1.0 - smoothstep(-0.02, 0.02, dSpade);
+    } else if (suitType < 1.5) {
+      // ♥ HEART: Upper twin lobes + downward tapering V cone
+      vec2 p = suitUV;
+      float dCone = max(dot(vec2(abs(p.x), p.y + 0.38), vec2(0.804, -0.594)), max(-0.38 - p.y, p.y - 0.06));
+      float dLobes = length(vec2(abs(p.x) - 0.15, p.y - 0.06)) - 0.19;
+      float dHeart = min(dLobes, dCone);
+      suitShape = 1.0 - smoothstep(-0.02, 0.02, dHeart);
+    } else if (suitType < 2.5) {
+      // ♦ DIAMOND: Sharp multi-faceted rhombus
+      float dRhombus = abs(suitUV.x) * 1.45 + abs(suitUV.y) * 1.0 - 0.38;
+      suitShape = 1.0 - smoothstep(-0.02, 0.02, dRhombus);
+    } else {
+      // ♣ CLUB: Tri-circle trefoil with bottom stem
+      vec2 p = suitUV;
+      float cTop = length(p - vec2(0.0, 0.14)) - 0.17;
+      float cSides = length(vec2(abs(p.x) - 0.16, p.y - (-0.06))) - 0.17;
+      float cLobes = min(cTop, cSides);
+      float stemHalfW = 0.035 + (-p.y - 0.06) * 0.40;
+      float dStem = max(abs(p.x) - stemHalfW, max(-p.y - 0.40, p.y + 0.06));
+      float dClub = min(cLobes, dStem);
+      suitShape = 1.0 - smoothstep(-0.02, 0.02, dClub);
+    }
+  }
+
+  // Authentic Casino Ace Corner Indices (A + mini-suit in Top-Left & Bottom-Right)
+  float cornerAce = 0.0;
+  if (cardUV.x * cardUV.y < 0.0) {
+    vec2 pCard = (cardUV.x < 0.0) ? cardUV : -cardUV;
+    float cornerScale = cardHalfH * 0.16;
+    vec2 cUV = (pCard - vec2(-cardHalfW * 0.63, cardHalfH * 0.66)) / cornerScale;
+    if (abs(cUV.x) < 1.3 && abs(cUV.y) < 1.3) {
+      // Capital Letter 'A' (Ace)
+      vec2 pA = cUV - vec2(0.0, 0.38);
+      vec2 pSym = vec2(abs(pA.x), pA.y);
+      float dLeg = sdSegment(pSym, vec2(0.18, -0.26), vec2(0.0, 0.26));
+      float dBar = sdSegment(pA, vec2(-0.10, -0.06), vec2(0.10, -0.06));
+      float aLetter = 1.0 - smoothstep(-0.02, 0.02, min(dLeg, dBar) - 0.048);
+
+      // Mini Suit Pip directly beneath the 'A'
+      vec2 pPip = (cUV - vec2(0.0, -0.42)) * 1.6;
+      float dSuitPip = 1.0;
+      if (suitType < 0.5) {
+        // ♠ Mini Spade
+        vec2 pSp = vec2(pPip.x, -pPip.y);
+        float dHeadCone = max(dot(vec2(abs(pSp.x), pSp.y + 0.32), vec2(0.804, -0.594)), max(-0.32 - pSp.y, pSp.y - 0.05));
+        float dHeadLobes = length(vec2(abs(pSp.x) - 0.13, pSp.y - 0.05)) - 0.16;
+        float dStem = max(abs(pPip.x) - 0.04, max(-pPip.y - 0.35, pPip.y + 0.06));
+        dSuitPip = min(min(dHeadLobes, dHeadCone), dStem);
+      } else if (suitType < 1.5) {
+        // ♥ Mini Heart
+        float dCone = max(dot(vec2(abs(pPip.x), pPip.y + 0.32), vec2(0.804, -0.594)), max(-0.32 - pPip.y, pPip.y - 0.05));
+        float dLobes = length(vec2(abs(pPip.x) - 0.13, pPip.y - 0.05)) - 0.16;
+        dSuitPip = min(dLobes, dCone);
+      } else if (suitType < 2.5) {
+        // ♦ Mini Diamond
+        dSuitPip = abs(pPip.x) * 1.4 + abs(pPip.y) * 1.0 - 0.32;
+      } else {
+        // ♣ Mini Club
+        float cTop = length(pPip - vec2(0.0, 0.12)) - 0.15;
+        float cSides = length(vec2(abs(pPip.x) - 0.14, pPip.y - (-0.05))) - 0.15;
+        float dStem = max(abs(pPip.x) - 0.04, max(-pPip.y - 0.35, pPip.y + 0.05));
+        dSuitPip = min(min(cTop, cSides), dStem);
+      }
+      float pipShape = 1.0 - smoothstep(-0.03, 0.03, dSuitPip);
+      cornerAce = clamp(aLetter + pipShape, 0.0, 1.0);
+    }
+  }
+
+  // Neon Casino Palette: Ruby Red for Hearts/Diamonds, Cyber Champagne/Violet for Spades/Clubs
+  vec3 rubyRed = vec3(1.0, 0.18, 0.35);
+  vec3 neonGold = vec3(1.0, 0.86, 0.48);
+  vec3 electricViolet = vec3(0.72, 0.38, 1.0);
+
+  bool isRed = (suitType > 0.5 && suitType < 2.5);
+  vec3 suitColor = isRed ? rubyRed : neonGold;
+  vec3 suitGlow = isRed ? vec3(1.0, 0.3, 0.45) : electricViolet;
+
+  // Dark obsidian card core with deep rich contrast
+  vec3 cardBase = vec3(0.05, 0.04, 0.08) + cardPattern * vec3(0.15, 0.12, 0.2);
+  vec3 cardDecorated = mix(cardBase, neonGold * 1.4, cardOuterBorder * 0.95);
+  cardDecorated = mix(cardDecorated, neonGold * 0.8, pinstripe * 0.8);
+  cardDecorated = mix(cardDecorated, suitColor * 1.8, clamp(suitShape * 0.95 + cornerAce * 0.95, 0.0, 1.0));
+
+  // Card composition with glow aura
   float aBody = wireMask * uTunnelOpacity;
   float aRim = rimGlow;
-  float aPulse = clamp(dataPulse * pulseMask, 0.0, 1.0);
+  float aCard = cardMask;
+
+  vec3 cardFinal = cardDecorated * aCard * 3.6 + suitGlow * cardOuterGlow * 1.8;
 
   vec3 fiberCol = uTunnelColor * aBody
     + cableCol * aRim * 1.3 * uGlow
-    + uPulseColor * dataPulse * 3.0 * pulseMask;
+    + cardFinal;
 
   float distFade = smoothstep(0.0, uFadeNear, r) * smoothstep(uFadeFar, uFadeFar - 0.9, r);
-  float inten = clamp(aBody + aRim + aPulse, 0.0, 1.0) * distFade;
+  float inten = clamp(aBody + aRim + aCard + cardOuterGlow * 0.6, 0.0, 1.0) * distFade;
 
   vec3 finalCol = fiberCol * uBrightness;
   float alpha = clamp(inten, 0.0, 1.0) * uOpacity;
