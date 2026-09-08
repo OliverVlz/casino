@@ -1,0 +1,311 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e3]: An original concept. A fictional collection. No real casinos or offers.
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "MODEL home" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - text: MODEL
+        - generic [ref=e9]: .
+      - navigation "Main navigation" [ref=e10]:
+        - link "Explore casinos" [ref=e11] [cursor=pointer]:
+          - /url: /#casino-directory
+        - link "Bonuses" [ref=e12] [cursor=pointer]:
+          - /url: /bonuses
+        - link "The journal" [ref=e13] [cursor=pointer]:
+          - /url: /#guides
+        - link "Our approach" [ref=e14] [cursor=pointer]:
+          - /url: /#methodology
+      - link "Find your fit" [ref=e15] [cursor=pointer]:
+        - /url: /#casino-directory
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - heading "A better perspective on play." [level=1] [ref=e22]
+          - paragraph [ref=e23]: Explore the details. Compare the possibilities. Find what fits your way of playing — with clarity at every step.
+          - generic [ref=e24]:
+            - link "Explore casinos" [ref=e25] [cursor=pointer]:
+              - /url: /#casino-directory
+            - link "A more considered approach" [ref=e28] [cursor=pointer]:
+              - /url: "#methodology"
+          - generic [ref=e29]: Independent thinking. Informed choices.
+        - img "Original obsidian casino token with champagne gold edges and a violet inlay" [ref=e31]:
+          - generic [aria-hidden] [ref=e34]:
+            - generic [ref=e35]: THE MODEL TOKEN
+            - generic [ref=e36]: Original by design.
+      - generic [ref=e37]:
+        - generic [ref=e38]: Casino discovery, thoughtfully reimagined.
+        - link [ref=e39] [cursor=pointer]:
+          - /url: "#casino-directory"
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - heading "Find your kind of casino." [level=2] [ref=e46]
+          - paragraph [ref=e47]: A few preferences. A clearer shortlist. Explore our fictional catalogue to see how MODEL works.
+        - generic [ref=e48]: CANADA · DEMO COLLECTION
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - text: What do you enjoy?
+          - combobox "What do you enjoy?" [ref=e51]:
+            - option "All casino types" [selected]
+            - option "Casino"
+            - option "Slots"
+            - option "Live casino"
+        - generic [ref=e52]:
+          - text: How would you pay?
+          - combobox "How would you pay?" [ref=e53]:
+            - option "All payment methods" [selected]
+            - option "Crypto"
+            - option "Bank transfer"
+            - option "Card"
+        - generic [ref=e54]:
+          - text: Maximum minimum deposit
+          - combobox "Maximum minimum deposit" [ref=e55]:
+            - option "Any amount" [selected]
+            - option "Up to $10 CAD"
+            - option "Up to $25 CAD"
+            - option "Up to $50 CAD"
+        - button "Reset filters" [ref=e56] [cursor=pointer]
+      - generic [ref=e57]:
+        - status [ref=e58]: 6 matches · fictional operators
+        - generic [ref=e59]:
+          - text: Sort by
+          - combobox "Sort by" [ref=e60]:
+            - option "Demo order" [selected]
+            - option "Lowest deposit"
+            - option "Name A–Z"
+      - generic [aria-hidden] [ref=e61]:
+        - generic [ref=e62]: THE CASINO
+        - generic [ref=e63]: EXAMPLE WELCOME OFFER
+        - generic [ref=e64]: PAYMENT OPTIONS
+        - generic [ref=e65]: TAKE A CLOSER LOOK
+      - generic [ref=e66]:
+        - article [ref=e67]:
+          - generic [ref=e68]:
+            - generic [aria-hidden] [ref=e69]: A
+            - generic [ref=e70]:
+              - link "Aurum" [ref=e71] [cursor=pointer]:
+                - /url: /casino/aurum
+              - paragraph [ref=e72]: Casino
+          - generic [ref=e73]:
+            - strong [ref=e74]: 100% up to $200
+            - paragraph [ref=e75]: Min. deposit $20 CAD
+          - generic [ref=e76]:
+            - generic [ref=e77]: Crypto
+            - generic [ref=e78]: Bank transfer
+          - link "Explore demo" [ref=e79] [cursor=pointer]:
+            - /url: /casino/aurum
+        - article [ref=e82]:
+          - generic [ref=e83]:
+            - generic [aria-hidden] [ref=e84]: "N"
+            - generic [ref=e85]:
+              - link "Nocturne" [ref=e86] [cursor=pointer]:
+                - /url: /casino/nocturne
+              - paragraph [ref=e87]: Casino · Slots
+          - generic [ref=e88]:
+            - strong [ref=e89]: 50 demo spins
+            - paragraph [ref=e90]: Min. deposit $10 CAD
+          - generic [ref=e91]:
+            - generic [ref=e92]: Card
+            - generic [ref=e93]: Bank transfer
+          - link "Explore demo" [ref=e94] [cursor=pointer]:
+            - /url: /casino/nocturne
+        - article [ref=e97]:
+          - generic [ref=e98]:
+            - generic [aria-hidden] [ref=e99]: V
+            - generic [ref=e100]:
+              - link "Vault" [ref=e101] [cursor=pointer]:
+                - /url: /casino/vault
+              - paragraph [ref=e102]: Casino · Live casino
+          - generic [ref=e103]:
+            - strong [ref=e104]: 100% up to $500
+            - paragraph [ref=e105]: Min. deposit $50 CAD
+          - generic [ref=e106]: Crypto
+          - link "Explore demo" [ref=e108] [cursor=pointer]:
+            - /url: /casino/vault
+        - article [ref=e111]:
+          - generic [ref=e112]:
+            - generic [aria-hidden] [ref=e113]: F
+            - generic [ref=e114]:
+              - link "Forma" [ref=e115] [cursor=pointer]:
+                - /url: /casino/forma
+              - paragraph [ref=e116]: Slots
+          - generic [ref=e117]:
+            - strong [ref=e118]: 25 demo spins
+            - paragraph [ref=e119]: Min. deposit $5 CAD
+          - generic [ref=e120]: Card
+          - link "Explore demo" [ref=e122] [cursor=pointer]:
+            - /url: /casino/forma
+        - article [ref=e125]:
+          - generic [ref=e126]:
+            - generic [aria-hidden] [ref=e127]: O
+            - generic [ref=e128]:
+              - link "Oblique" [ref=e129] [cursor=pointer]:
+                - /url: /casino/oblique
+              - paragraph [ref=e130]: Live casino
+          - generic [ref=e131]:
+            - strong [ref=e132]: 50% up to $300
+            - paragraph [ref=e133]: Min. deposit $100 CAD
+          - generic [ref=e134]:
+            - generic [ref=e135]: Bank transfer
+            - generic [ref=e136]: Card
+          - link "Explore demo" [ref=e137] [cursor=pointer]:
+            - /url: /casino/oblique
+        - article [ref=e140]:
+          - generic [ref=e141]:
+            - generic [aria-hidden] [ref=e142]: P
+            - generic [ref=e143]:
+              - link "Prism" [ref=e144] [cursor=pointer]:
+                - /url: /casino/prism
+              - paragraph [ref=e145]: Casino · Slots
+          - generic [ref=e146]:
+            - strong [ref=e147]: 75% up to $150
+            - paragraph [ref=e148]: Min. deposit $25 CAD
+          - generic [ref=e149]:
+            - generic [ref=e150]: Crypto
+            - generic [ref=e151]: Card
+          - link "Explore demo" [ref=e152] [cursor=pointer]:
+            - /url: /casino/prism
+      - paragraph [ref=e155]:
+        - text: A clear view, not a recommendation. All names, offers and values in this collection are fictional.
+        - link "How to read this demo" [ref=e156] [cursor=pointer]:
+          - /url: "#methodology"
+    - generic [ref=e162]:
+      - heading "Different ways in. The same attention to detail." [level=2] [ref=e163]
+      - paragraph [ref=e164]: Compare payment types before considering an offer. Availability, fees and processing times depend on the operator and your location.
+      - paragraph [ref=e165]: Crypto payments can involve network fees and price changes. A supported payment method is not evidence of licensing or suitability.
+      - generic [ref=e166]:
+        - generic [ref=e167]: Crypto
+        - generic [ref=e168]: Card
+        - generic [ref=e169]: Bank transfer
+      - link "Compare payment options" [ref=e170] [cursor=pointer]:
+        - /url: "#casino-directory"
+    - generic [ref=e173]:
+      - generic [ref=e174]:
+        - generic [ref=e175]:
+          - heading "More than a welcome bonus." [level=2] [ref=e176]
+          - paragraph [ref=e177]: The numbers catch your eye. The conditions deserve your attention.
+        - link "Compare all offers" [ref=e178] [cursor=pointer]:
+          - /url: /bonuses
+      - table [ref=e182]:
+        - caption [ref=e183]: A closer look at a few example offers
+        - rowgroup [ref=e184]:
+          - row [ref=e185]:
+            - columnheader "Casino" [ref=e186]
+            - columnheader "Example offer" [ref=e187]
+            - columnheader "Conditions" [ref=e188]
+            - columnheader "Min. deposit" [ref=e189]
+            - columnheader "Details" [ref=e190]
+        - rowgroup [ref=e192]:
+          - row [ref=e193]:
+            - rowheader "Aurum" [ref=e194]
+            - cell "100% up to $200" [ref=e195]
+            - cell "30x bonus; 14 days — fictional example, not redeemable." [ref=e196]
+            - cell "$20 CAD" [ref=e197]
+            - cell [ref=e198]:
+              - link "Read Aurum demo details" [ref=e199] [cursor=pointer]:
+                - /url: /casino/aurum
+          - row [ref=e202]:
+            - rowheader "Nocturne" [ref=e203]
+            - cell "50 demo spins" [ref=e204]
+            - cell "35x winnings; 7 days — fictional example, not redeemable." [ref=e205]
+            - cell "$10 CAD" [ref=e206]
+            - cell [ref=e207]:
+              - link "Read Nocturne demo details" [ref=e208] [cursor=pointer]:
+                - /url: /casino/nocturne
+          - row [ref=e211]:
+            - rowheader "Vault" [ref=e212]
+            - cell "100% up to $500" [ref=e213]
+            - cell "40x bonus; 30 days — fictional example, not redeemable." [ref=e214]
+            - cell "$50 CAD" [ref=e215]
+            - cell [ref=e216]:
+              - link "Read Vault demo details" [ref=e217] [cursor=pointer]:
+                - /url: /casino/vault
+    - generic [ref=e220]:
+      - generic [ref=e221]:
+        - heading "A little context goes a long way." [level=2] [ref=e222]
+        - generic [ref=e223]: THE MODEL JOURNAL
+      - generic [ref=e224]:
+        - article [ref=e225]:
+          - heading "Understand a welcome offer" [level=3] [ref=e227]
+          - paragraph [ref=e228]: A larger headline does not tell the whole story. Compare the wagering basis, eligible games and expiry before making a decision.
+          - link "Compare example terms" [ref=e229] [cursor=pointer]:
+            - /url: /bonuses
+        - article [ref=e232]:
+          - heading "Choose a payment method" [level=3] [ref=e234]
+          - paragraph [ref=e235]: Look beyond the deposit. Check withdrawal methods, identity checks, limits and any fees.
+          - link "Explore payment types" [ref=e236] [cursor=pointer]:
+            - /url: "#payments"
+        - article [ref=e239]:
+          - heading "Set your boundaries" [level=3] [ref=e241]
+          - paragraph [ref=e242]: Decide your time and spending limits before playing. Gambling is entertainment, never a source of income.
+          - link "Make room for a pause" [ref=e243] [cursor=pointer]:
+            - /url: "#responsible-play"
+    - generic [ref=e246]:
+      - generic [ref=e247]:
+        - heading "Clarity is our starting point." [level=2] [ref=e248]
+        - paragraph [ref=e249]: Better decisions begin with information you can actually use.
+        - link "Look beyond the headline" [ref=e250] [cursor=pointer]:
+          - /url: /bonuses
+      - generic [ref=e253]:
+        - article [ref=e254]:
+          - heading "Read the conditions" [level=3] [ref=e255]
+          - paragraph [ref=e256]: Bring the terms, deposit requirements and payment options into the same view.
+        - article [ref=e257]:
+          - heading "Compare what matters" [level=3] [ref=e258]
+          - paragraph [ref=e259]: Filter by your preferences instead of relying on a headline bonus or an unexplained score.
+        - article [ref=e260]:
+          - heading "Keep the context" [level=3] [ref=e261]
+          - paragraph [ref=e262]: This is a design demonstration. All operators, offers and comparisons shown here are fictional.
+    - generic [ref=e263]:
+      - heading "Good questions. Clear answers." [level=2] [ref=e264]
+      - generic [ref=e265]:
+        - group [ref=e266]:
+          - generic "Can I play on MODEL?" [ref=e267] [cursor=pointer]:
+            - text: Can I play on MODEL?
+            - generic [aria-hidden] [ref=e268]: +
+        - group [ref=e269]:
+          - generic "Are these real casino offers?" [ref=e270] [cursor=pointer]:
+            - text: Are these real casino offers?
+            - generic [aria-hidden] [ref=e271]: +
+        - group [ref=e272]:
+          - generic "How is the catalogue ordered?" [ref=e273] [cursor=pointer]:
+            - text: How is the catalogue ordered?
+            - generic [aria-hidden] [ref=e274]: +
+        - group [ref=e275]:
+          - generic "Does crypto mean a casino is regulated?" [ref=e276] [cursor=pointer]:
+            - text: Does crypto mean a casino is regulated?
+            - generic [aria-hidden] [ref=e277]: +
+        - group [ref=e278]:
+          - generic "What should I check before playing?" [ref=e279] [cursor=pointer]:
+            - text: What should I check before playing?
+            - generic [aria-hidden] [ref=e280]: +
+    - generic [ref=e282]:
+      - generic [ref=e283]: 19+
+      - generic [ref=e284]:
+        - heading "Play should stay in perspective." [level=2] [ref=e285]
+        - paragraph [ref=e286]: Set a limit. Take a break. Never chase a loss. This demonstration is intended for adults aged 19 and over; actual requirements depend on your location.
+        - generic [ref=e287]:
+          - link "Responsible Gambling Council" [ref=e288] [cursor=pointer]:
+            - /url: https://www.responsiblegambling.org
+          - link "ConnexOntario" [ref=e291] [cursor=pointer]:
+            - /url: https://www.connexontario.ca
+  - contentinfo [ref=e294]:
+    - generic [ref=e295]:
+      - generic [ref=e296]:
+        - link "MODEL." [ref=e297] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e300]: A better perspective on play.
+        - navigation "Footer" [ref=e301]:
+          - link "Our approach" [ref=e302] [cursor=pointer]:
+            - /url: /#methodology
+          - link "Responsible play" [ref=e303] [cursor=pointer]:
+            - /url: /#responsible-play
+          - link "Demo offers" [ref=e304] [cursor=pointer]:
+            - /url: /bonuses
+      - generic [ref=e305]:
+        - generic [ref=e306]: © 2026 MODEL Studio · Design demonstration
+        - generic [ref=e307]: Fictional operators. No affiliate commissions. 19+.
+  - alert [ref=e308]

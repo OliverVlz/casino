@@ -1,0 +1,158 @@
+[
+  {
+    "source": "card/angle.png",
+    "outputs": [
+      "card/angle.webp",
+      "card/angle.avif"
+    ],
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "chip/angle.png",
+    "outputs": [
+      "chip/angle.webp",
+      "chip/angle.avif"
+    ],
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "chip/CasinoChip_BlackViolet.png",
+    "outputs": [
+      "chip/CasinoChip_BlackViolet.webp",
+      "chip/CasinoChip_BlackViolet.avif"
+    ],
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "chip/CasinoChip_Gold.png",
+    "outputs": [
+      "chip/CasinoChip_Gold.webp",
+      "chip/CasinoChip_Gold.avif"
+    ],
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "chip/front.png",
+    "outputs": [
+      "chip/front.webp",
+      "chip/front.avif"
+    ],
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "coin/angle.png",
+    "outputs": [
+      "coin/angle.webp",
+      "coin/angle.avif"
+    ],
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "coin/CryptoCoin_Violet.png",
+    "outputs": [
+      "coin/CryptoCoin_Violet.webp",
+      "coin/CryptoCoin_Violet.avif"
+    ],
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "coin/front.png",
+    "outputs": [
+      "coin/front.webp",
+      "coin/front.avif"
+    ],
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "dice/angle.png",
+    "outputs": [
+      "dice/angle.webp",
+      "dice/angle.avif"
+    ],
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "hero/angle.png",
+    "outputs": [
+      "hero/angle.webp",
+      "hero/angle.avif"
+    ],
+    "width": 1024,
+    "height": 1024,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "hero/back.png",
+    "outputs": [
+      "hero/back.webp",
+      "hero/back.avif"
+    ],
+    "width": 1024,
+    "height": 1024,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "hero/front.png",
+    "outputs": [
+      "hero/front.webp",
+      "hero/front.avif"
+    ],
+    "width": 1024,
+    "height": 1024,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  },
+  {
+    "source": "roulette/angle.png",
+    "outputs": [
+      "roulette/angle.webp",
+      "roulette/angle.avif"
+    ],
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "author": "MODEL procedural Blender generator",
+    "generator": "../../assets/casino_asset_generator.py"
+  }
+]

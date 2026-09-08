@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-08T01:39:50.840495+00:00",
+  "title": "Design System: MODEL",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Ground",
+        "tonalRamp": [
+          "oklch(15% 0.005 210)",
+          "oklch(26% 0.005 210)",
+          "oklch(38% 0.005 210)",
+          "oklch(49% 0.005 210)",
+          "oklch(61% 0.005 210)",
+          "oklch(72% 0.005 210)",
+          "oklch(84% 0.005 210)",
+          "oklch(95% 0.005 210)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15% 0.005 220)",
+          "oklch(26% 0.005 220)",
+          "oklch(38% 0.005 220)",
+          "oklch(49% 0.005 220)",
+          "oklch(61% 0.005 220)",
+          "oklch(72% 0.005 220)",
+          "oklch(84% 0.005 220)",
+          "oklch(95% 0.005 220)"
+        ]
+      },
+      "raised": {
+        "role": "neutral",
+        "displayName": "Raised",
+        "tonalRamp": [
+          "oklch(15% 0.005 225)",
+          "oklch(26% 0.005 225)",
+          "oklch(38% 0.005 225)",
+          "oklch(49% 0.005 225)",
+          "oklch(61% 0.005 225)",
+          "oklch(72% 0.005 225)",
+          "oklch(84% 0.005 225)",
+          "oklch(95% 0.005 225)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.05 40)",
+          "oklch(26% 0.05 40)",
+          "oklch(38% 0.05 40)",
+          "oklch(49% 0.05 40)",
+          "oklch(61% 0.05 40)",
+          "oklch(72% 0.05 40)",
+          "oklch(84% 0.05 40)",
+          "oklch(95% 0.05 40)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.005 210)",
+          "oklch(26% 0.005 210)",
+          "oklch(38% 0.005 210)",
+          "oklch(49% 0.005 210)",
+          "oklch(61% 0.005 210)",
+          "oklch(72% 0.005 210)",
+          "oklch(84% 0.005 210)",
+          "oklch(95% 0.005 210)"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Gold",
+        "tonalRamp": [
+          "oklch(15% 0.05 37)",
+          "oklch(26% 0.05 37)",
+          "oklch(38% 0.05 37)",
+          "oklch(49% 0.05 37)",
+          "oklch(61% 0.05 37)",
+          "oklch(72% 0.05 37)",
+          "oklch(84% 0.05 37)",
+          "oklch(95% 0.05 37)"
+        ]
+      },
+      "gold-hover": {
+        "role": "primary",
+        "displayName": "Gold Hover",
+        "tonalRamp": [
+          "oklch(15% 0.05 37)",
+          "oklch(26% 0.05 37)",
+          "oklch(38% 0.05 37)",
+          "oklch(49% 0.05 37)",
+          "oklch(61% 0.05 37)",
+          "oklch(72% 0.05 37)",
+          "oklch(84% 0.05 37)",
+          "oklch(95% 0.05 37)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "tonalRamp": [
+          "oklch(15% 0.005 225)",
+          "oklch(26% 0.005 225)",
+          "oklch(38% 0.005 225)",
+          "oklch(49% 0.005 225)",
+          "oklch(61% 0.005 225)",
+          "oklch(72% 0.005 225)",
+          "oklch(84% 0.005 225)",
+          "oklch(95% 0.005 225)"
+        ]
+      },
+      "violet": {
+        "role": "secondary",
+        "displayName": "Violet",
+        "tonalRamp": [
+          "oklch(15% 0.05 259)",
+          "oklch(26% 0.05 259)",
+          "oklch(38% 0.05 259)",
+          "oklch(49% 0.05 259)",
+          "oklch(61% 0.05 259)",
+          "oklch(72% 0.05 259)",
+          "oklch(84% 0.05 259)",
+          "oklch(95% 0.05 259)"
+        ]
+      }
+    },
+    "shadows": [
+      {
+        "name": "object-poster",
+        "value": "0 35px 24px #0005",
+        "purpose": "Hero raster drop-shadow, not interface elevation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-transition",
+        "value": ".2s",
+        "purpose": "Button and row state changes."
+      },
+      {
+        "name": "poster-crossfade",
+        "value": ".65s",
+        "purpose": "Static poster to ready canvas."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "767px"
+      },
+      {
+        "name": "compact-max",
+        "value": "1100px"
+      },
+      {
+        "name": "wide-min",
+        "value": "1500px"
+      }
+    ],
+    "tonalRampNote": "Synthesized preview ramps only; not application tokens."
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "description": "Primary button extracted from MODEL.",
+      "html": "<button class=\"ds-button-primary\">Explore demo</button>",
+      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:48px;padding:12px 22px;border:1px solid transparent;border-radius:5px;font:600 13px Inter,sans-serif;cursor:pointer;transition:background .2s,color .2s,border-color .2s;color:#171614;background:var(--gold,#d3b88c);}.ds-button-primary:hover{background:var(--gold-hover,#e5cda7)}.ds-button-primary:focus-visible{outline:2px solid var(--gold,#d3b88c);outline-offset:5px}.ds-button-primary:disabled{opacity:.5;cursor:not-allowed}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Outline button",
+      "kind": "button",
+      "description": "Outline button extracted from MODEL.",
+      "html": "<button class=\"ds-button-outline\">Explore demo</button>",
+      "css": ".ds-button-outline{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:48px;padding:12px 22px;border:1px solid transparent;border-radius:5px;font:600 13px Inter,sans-serif;cursor:pointer;transition:background .2s,color .2s,border-color .2s;color:var(--gold,#d3b88c);background:transparent;border-color:#575044;}.ds-button-outline:hover{background:#28241e;border-color:var(--gold,#d3b88c)}.ds-button-outline:focus-visible{outline:2px solid var(--gold,#d3b88c);outline-offset:5px}.ds-button-outline:disabled{opacity:.5;cursor:not-allowed}",
+      "refersTo": "button-outline"
+    },
+    {
+      "name": "Payment select",
+      "kind": "input",
+      "description": "Payment select extracted from MODEL.",
+      "html": "<label class=\"ds-field\">How would you pay?<select><option>All payment methods</option><option>Card</option></select></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:9px;font:11px Inter,sans-serif;color:#bbb9b5;background:var(--surface,#18191b);padding:24px 26px}.ds-field select{border:0;border-bottom:1px solid #42403b;background:transparent;color:var(--ink,#f1eee8);padding:6px 24px 9px 0;min-height:44px;font:13px Inter,sans-serif}.ds-field select:focus-visible{outline:2px solid var(--gold,#d3b88c);outline-offset:5px}.ds-field option{background:var(--raised,#202124);color:var(--ink,#f1eee8)}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Navigation extracted from MODEL.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#directory\">Explore casinos</a><a href=\"#bonuses\" aria-current=\"page\">Bonuses</a></nav>",
+      "css": ".ds-nav{display:flex;gap:30px}.ds-nav a{font:12px Inter,sans-serif;color:#c5c3bf;padding:12px 0;text-decoration:none}.ds-nav a:hover,.ds-nav a[aria-current]{color:var(--gold,#d3b88c)}.ds-nav a:focus-visible{outline:2px solid var(--gold,#d3b88c);outline-offset:5px}"
+    },
+    {
+      "name": "Payment tag",
+      "kind": "chip",
+      "description": "Payment tag extracted from MODEL.",
+      "html": "<span class=\"ds-tag\">Card</span>",
+      "css": ".ds-tag{display:inline-block;font:9px Inter,sans-serif;color:#c0b9ad;padding:3px 8px;background:#222324;border-radius:3px}",
+      "refersTo": "payment-tag"
+    },
+    {
+      "name": "Offer panel",
+      "kind": "card",
+      "description": "Offer panel extracted from MODEL.",
+      "html": "<aside class=\"ds-panel\"><h2>Example offer</h2><p>Fictional terms for this demonstration.</p></aside>",
+      "css": ".ds-panel{background:var(--surface,#18191b);padding:35px;border-radius:10px;color:var(--ink,#f1eee8);font:14px/1.65 Inter,sans-serif}.ds-panel h2{font-size:30px;font-weight:500;line-height:1.16;letter-spacing:-.035em;color:var(--gold,#d3b88c);margin:0}.ds-panel p{margin:20px 0 0;color:var(--muted,#adaeaf)}",
+      "refersTo": "offer-panel"
+    }
+  ],
+  "narrative": {
+    "northStar": "The MODEL product studio",
+    "overview": "An original product-studio object introduces a precise editorial comparison. Obsidian surfaces, champagne actions and ceramic typography keep the interface calm; violet belongs to the object material and restrained identity accents.\n\nThis system applies only to MODEL, the English Canadian demonstration. Visible fictional-content disclosures and clear comparison terms carry the product voice; the artwork supports discovery without delaying access to the directory.",
+    "keyCharacteristics": [
+      "Material depth in original objects; flat comparison surfaces.",
+      "Large, medium-weight Inter headings and compact supporting text.",
+      "Fine dividers, generous section spacing and explicit demo context."
+    ],
+    "rules": [
+      {
+        "name": "The Direct Comparison Rule",
+        "body": "Keep the directory in normal document flow immediately after the introductory hero.",
+        "section": "layout"
+      },
+      {
+        "name": "The Material Depth Rule",
+        "body": "Reserve pronounced depth for the objects; keep comparison surfaces flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the demo disclosure and offer conditions visible.",
+      "Do place the hero object beside desktop copy and below mobile copy.",
+      "Do retain keyboard focus, native controls and the static hero fallback."
+    ],
+    "donts": [
+      "Don't replace original objects with operator or cryptocurrency logos.",
+      "Don't pin the hero or intercept scrolling.",
+      "Don't turn comparison rows into floating, heavily shadowed cards."
+    ]
+  }
+}

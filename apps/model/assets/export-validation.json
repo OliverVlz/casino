@@ -1,0 +1,82 @@
+[
+  {
+    "file": "casino-chip.glb",
+    "bytes": 97924,
+    "triangles": 3592,
+    "materials": [
+      "M_Obsidian",
+      "M_Gold"
+    ],
+    "normals": true,
+    "textures": 0,
+    "cameras": 0,
+    "lights": 0
+  },
+  {
+    "file": "casino-dice.glb",
+    "bytes": 110712,
+    "triangles": 4056,
+    "materials": [
+      "M_Obsidian",
+      "M_Gold"
+    ],
+    "normals": true,
+    "textures": 0,
+    "cameras": 0,
+    "lights": 0
+  },
+  {
+    "file": "crypto-coin.glb",
+    "bytes": 167416,
+    "triangles": 6136,
+    "materials": [
+      "M_Gold",
+      "M_Obsidian"
+    ],
+    "normals": true,
+    "textures": 0,
+    "cameras": 0,
+    "lights": 0
+  },
+  {
+    "file": "hero-casino-token.glb",
+    "bytes": 375660,
+    "triangles": 15024,
+    "materials": [
+      "M_Obsidian",
+      "M_Gold",
+      "M_VioletEmission"
+    ],
+    "normals": true,
+    "textures": 0,
+    "cameras": 0,
+    "lights": 0
+  },
+  {
+    "file": "playing-card.glb",
+    "bytes": 48276,
+    "triangles": 1620,
+    "materials": [
+      "M_Gold",
+      "M_Obsidian",
+      "M_WhiteCeramic"
+    ],
+    "normals": true,
+    "textures": 0,
+    "cameras": 0,
+    "lights": 0
+  },
+  {
+    "file": "roulette-element.glb",
+    "bytes": 150740,
+    "triangles": 5656,
+    "materials": [
+      "M_Obsidian",
+      "M_Gold"
+    ],
+    "normals": true,
+    "textures": 0,
+    "cameras": 0,
+    "lights": 0
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "file": "hero-casino-token.glb",
+    "triangles": 15024,
+    "bytes": 375660,
+    "budget": 20000
+  },
+  {
+    "file": "casino-chip.glb",
+    "triangles": 3592,
+    "bytes": 97924,
+    "budget": 10000
+  },
+  {
+    "file": "crypto-coin.glb",
+    "triangles": 6136,
+    "bytes": 167416,
+    "budget": 10000
+  },
+  {
+    "file": "casino-dice.glb",
+    "triangles": 4056,
+    "bytes": 110712,
+    "budget": 10000
+  },
+  {
+    "file": "playing-card.glb",
+    "triangles": 1620,
+    "bytes": 48276,
+    "budget": 10000
+  },
+  {
+    "file": "roulette-element.glb",
+    "triangles": 5656,
+    "bytes": 150740,
+    "budget": 10000
+  }
+]

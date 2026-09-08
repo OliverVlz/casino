@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "snapshotVersion": 1,
+  "siteKey": "model",
+  "generatedAt": "2026-09-07T12:00:00.000Z",
+  "site": {
+    "name": "MODEL",
+    "domain": "model.example",
+    "marketCode": "CA",
+    "defaultLocale": "en-CA",
+    "locales": [
+      "en-CA"
+    ]
+  },
+  "policy": {
+    "jurisdiction": "Canada — MODEL demonstration",
+    "minimumAge": 19,
+    "effectiveFrom": "2026-09-07T12:00:00.000Z",
+    "reviewedAt": "2026-09-07T12:00:00.000Z",
+    "promotionalRestrictions": [
+      "Fictional demonstration; no real offers or operator authorisation."
+    ],
+    "responsibleGamingResources": [
+      {
+        "label": "Responsible Gambling Council",
+        "url": "https://www.responsiblegambling.org"
+      },
+      {
+        "label": "ConnexOntario",
+        "url": "https://www.connexontario.ca"
+      }
+    ],
+    "sources": [
+      {
+        "label": "MODEL demo content specification (not regulatory approval)",
+        "url": "https://model.example/demo",
+        "publisher": "MODEL Studio",
+        "reviewedAt": "2026-09-07T12:00:00.000Z"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "id": "model-home",
+      "locale": "en-CA",
+      "route": "/",
+      "title": "MODEL — A better perspective on play",
+      "description": "Explore the details. Compare the possibilities. Find what fits your way of playing — with clarity at every step.",
+      "canonicalUrl": "https://model.example/",
+      "updatedAt": "2026-09-07T12:00:00.000Z",
+      "reviewedAt": "2026-09-07T12:00:00.000Z",
+      "author": {
+        "name": "MODEL Studio",
+        "role": "Demo content"
+      },
+      "blocks": [
+        {
+          "blockType": "hero",
+          "eyebrow": "MODEL",
+          "heading": "A better perspective on play.",
+          "summary": "Explore the details. Compare the possibilities. Find what fits your way of playing — with clarity at every step.",
+          "primaryActionLabel": "Explore casinos",
+          "primaryActionHref": "/#casino-directory"
+        },
+        {
+          "blockType": "casinoList",
+          "heading": "Find your kind of casino.",
+          "intro": "A few preferences. A clearer shortlist. Explore our fictional catalogue to see how MODEL works.",
+          "casinoSlugs": [
+            "aurum",
+            "nocturne",
+            "vault",
+            "forma",
+            "oblique",
+            "prism"
+          ]
+        },
+        {
+          "blockType": "copy",
+          "heading": "Different ways in. The same attention to detail.",
+          "body": [
+            "Compare payment types before considering an offer. Availability, fees and processing times depend on the operator and your location.",
+            "Crypto payments can involve network fees and price changes. A supported payment method is not evidence of licensing or suitability."
+          ],
+          "sources": []
+        },
+        {
+          "blockType": "copy",
+          "heading": "A little context goes a long way.",
+          "body": [
+            "Understand a welcome offer|A larger headline does not tell the whole story. Compare the wagering basis, eligible games and expiry before making a decision.",
+            "Choose a payment method|Look beyond the deposit. Check withdrawal methods, identity checks, limits and any fees.",
+            "Set your boundaries|Decide your time and spending limits before playing. Gambling is entertainment, never a source of income."
+          ],
+          "sources": []
+        },
+        {
+          "blockType": "copy",
+          "heading": "Clarity is our starting point.",
+          "body": [
+            "Read the conditions|Bring the terms, deposit requirements and payment options into the same view.",
+            "Compare what matters|Filter by your preferences instead of relying on a headline bonus or an unexplained score.",
+            "Keep the context|This is a design demonstration. All operators, offers and comparisons shown here are fictional."
+          ],
+          "sources": []
+        },
+        {
+          "blockType": "faq",
+          "heading": "Good questions. Clear answers.",
+          "items": [
+            {
+              "question": "Can I play on MODEL?",
+              "answer": "No. MODEL is a fictional comparison demonstration, not a casino. It does not accept deposits or offer real gambling.",
+              "sources": []
+            },
+            {
+              "question": "Are these real casino offers?",
+              "answer": "No. Every operator and offer is sample content. No commercial relationships or verified rankings are implied.",
+              "sources": []
+            },
+            {
+              "question": "How is the catalogue ordered?",
+              "answer": "The default is an explicit demo display order, not a quality rating. You can also sort by minimum deposit or name.",
+              "sources": []
+            },
+            {
+              "question": "Does crypto mean a casino is regulated?",
+              "answer": "No. Payment support alone does not establish whether an operator is authorised for your location.",
+              "sources": []
+            },
+            {
+              "question": "What should I check before playing?",
+              "answer": "Check the requirements for your location, the operator’s authorisation, full terms, withdrawal conditions and responsible-play tools.",
+              "sources": []
+            }
+          ]
+        },
+        {
+          "blockType": "responsibleGaming",
+          "heading": "Play should stay in perspective.",
+          "body": "Set a limit. Take a break. Never chase a loss. This demonstration is intended for adults aged 19 and over; actual requirements depend on your location.",
+          "resources": [
+            {
+              "label": "Responsible Gambling Council",
+              "url": "https://www.responsiblegambling.org"
+            },
+            {
+              "label": "ConnexOntario",
+              "url": "https://www.connexontario.ca"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "model-bonuses",
+      "locale": "en-CA",
+      "route": "/bonuses",
+      "title": "Compare demo bonuses — MODEL",
+      "description": "Compare fictional welcome offers and their conditions.",
+      "canonicalUrl": "https://model.example/bonuses",
+      "updatedAt": "2026-09-07T12:00:00.000Z",
+      "reviewedAt": "2026-09-07T12:00:00.000Z",
+      "author": {
+        "name": "MODEL Studio",
+        "role": "Demo content"
+      },
+      "blocks": [
+        {
+          "blockType": "copy",
+          "heading": "The offer is only the beginning.",
+          "body": [
+            "Put the headline next to the conditions. These fictional examples help you compare welcome packages, wagering requirements and minimum deposits."
+          ],
+          "sources": []
+        }
+      ]
+    }
+  ],
+  "casinos": [
+    {
+      "slug": "aurum",
+      "name": "Aurum",
+      "summary": "A considered all-rounder with a straightforward demo welcome package.",
+      "licenseLabel": "Fictional demo — no operating licence",
+      "licenseUrl": "https://model.example/demo",
+      "verifiedAt": "2026-09-07T12:00:00.000Z",
+      "highlights": [
+        "Categories: Casino",
+        "Payments: Crypto, Bank transfer",
+        "MinDepositCAD: 20",
+        "Bonus: 100% up to $200",
+        "Terms: 30x bonus; 14 days",
+        "Order: 1",
+        "Demo: true"
+      ]
+    },
+    {
+      "slug": "nocturne",
+      "name": "Nocturne",
+      "summary": "A quieter slot-focused experience with a lower illustrative entry point.",
+      "licenseLabel": "Fictional demo — no operating licence",
+      "licenseUrl": "https://model.example/demo",
+      "verifiedAt": "2026-09-07T12:00:00.000Z",
+      "highlights": [
+        "Categories: Casino, Slots",
+        "Payments: Card, Bank transfer",
+        "MinDepositCAD: 10",
+        "Bonus: 50 demo spins",
+        "Terms: 35x winnings; 7 days",
+        "Order: 2",
+        "Demo: true"
+      ]
+    },
+    {
+      "slug": "vault",
+      "name": "Vault",
+      "summary": "A crypto-first demo concept with live tables and transparent example terms.",
+      "licenseLabel": "Fictional demo — no operating licence",
+      "licenseUrl": "https://model.example/demo",
+      "verifiedAt": "2026-09-07T12:00:00.000Z",
+      "highlights": [
+        "Categories: Casino, Live casino",
+        "Payments: Crypto",
+        "MinDepositCAD: 50",
+        "Bonus: 100% up to $500",
+        "Terms: 40x bonus; 30 days",
+        "Order: 3",
+        "Demo: true"
+      ]
+    },
+    {
+      "slug": "forma",
+      "name": "Forma",
+      "summary": "A compact slots concept built around a small illustrative deposit.",
+      "licenseLabel": "Fictional demo — no operating licence",
+      "licenseUrl": "https://model.example/demo",
+      "verifiedAt": "2026-09-07T12:00:00.000Z",
+      "highlights": [
+        "Categories: Slots",
+        "Payments: Card",
+        "MinDepositCAD: 5",
+        "Bonus: 25 demo spins",
+        "Terms: 25x winnings; 7 days",
+        "Order: 4",
+        "Demo: true"
+      ]
+    },
+    {
+      "slug": "oblique",
+      "name": "Oblique",
+      "summary": "A table-focused demo concept for comparing larger minimum deposits.",
+      "licenseLabel": "Fictional demo — no operating licence",
+      "licenseUrl": "https://model.example/demo",
+      "verifiedAt": "2026-09-07T12:00:00.000Z",
+      "highlights": [
+        "Categories: Live casino",
+        "Payments: Bank transfer, Card",
+        "MinDepositCAD: 100",
+        "Bonus: 50% up to $300",
+        "Terms: 20x bonus; 14 days",
+        "Order: 5",
+        "Demo: true"
+      ]
+    },
+    {
+      "slug": "prism",
+      "name": "Prism",
+      "summary": "A flexible demo concept for exploring both card and crypto payment filters.",
+      "licenseLabel": "Fictional demo — no operating licence",
+      "licenseUrl": "https://model.example/demo",
+      "verifiedAt": "2026-09-07T12:00:00.000Z",
+      "highlights": [
+        "Categories: Casino, Slots",
+        "Payments: Crypto, Card",
+        "MinDepositCAD: 25",
+        "Bonus: 75% up to $150",
+        "Terms: 30x bonus; 14 days",
+        "Order: 6",
+        "Demo: true"
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "slug": "aurum-welcome",
+      "casinoSlug": "aurum",
+      "label": "100% up to $200",
+      "destinationUrl": "https://model.example/demo",
+      "termsSummary": "30x bonus; 14 days — fictional example, not redeemable.",
+      "validFrom": "2026-09-07T12:00:00.000Z"
+    },
+    {
+      "slug": "nocturne-welcome",
+      "casinoSlug": "nocturne",
+      "label": "50 demo spins",
+      "destinationUrl": "https://model.example/demo",
+      "termsSummary": "35x winnings; 7 days — fictional example, not redeemable.",
+      "validFrom": "2026-09-07T12:00:00.000Z"
+    },
+    {
+      "slug": "vault-welcome",
+      "casinoSlug": "vault",
+      "label": "100% up to $500",
+      "destinationUrl": "https://model.example/demo",
+      "termsSummary": "40x bonus; 30 days — fictional example, not redeemable.",
+      "validFrom": "2026-09-07T12:00:00.000Z"
+    },
+    {
+      "slug": "forma-welcome",
+      "casinoSlug": "forma",
+      "label": "25 demo spins",
+      "destinationUrl": "https://model.example/demo",
+      "termsSummary": "25x winnings; 7 days — fictional example, not redeemable.",
+      "validFrom": "2026-09-07T12:00:00.000Z"
+    },
+    {
+      "slug": "oblique-welcome",
+      "casinoSlug": "oblique",
+      "label": "50% up to $300",
+      "destinationUrl": "https://model.example/demo",
+      "termsSummary": "20x bonus; 14 days — fictional example, not redeemable.",
+      "validFrom": "2026-09-07T12:00:00.000Z"
+    },
+    {
+      "slug": "prism-welcome",
+      "casinoSlug": "prism",
+      "label": "75% up to $150",
+      "destinationUrl": "https://model.example/demo",
+      "termsSummary": "30x bonus; 14 days — fictional example, not redeemable.",
+      "validFrom": "2026-09-07T12:00:00.000Z"
+    }
+  ],
+  "redirects": [],
+  "checksum": "0408fa1286c90700ee5607138a2b8b69b94137920fa042605faed60ee447973a"
+}

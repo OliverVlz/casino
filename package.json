@@ -23,6 +23,8 @@
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
     "generate:types": "pnpm --filter @casino/control-plane generate:types",
-    "seed": "pnpm --filter @casino/control-plane seed"
+    "seed": "pnpm --filter @casino/control-plane seed",
+    "dev:model": "pnpm --filter @casino/model dev",
+    "sync:model": "pnpm --filter @casino/model sync:snapshot"
   }
 }
