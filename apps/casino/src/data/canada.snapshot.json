@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 1,
+  "snapshotVersion": 1,
+  "siteKey": "canada-casino",
+  "generatedAt": "2026-05-01T12:00:00.000Z",
+  "checksum": "1111111111111111111111111111111111111111111111111111111111111111",
+  "site": {
+    "name": "BestCasinoRanker",
+    "domain": "bestcasinoranker.com",
+    "marketCode": "CA",
+    "defaultLocale": "en-CA",
+    "locales": ["en-CA"],
+    "vertical": "casino"
+  },
+  "policy": {
+    "jurisdiction": "Canada (Ontario & Federal)",
+    "minimumAge": 19,
+    "effectiveFrom": "2026-01-01T00:00:00.000Z",
+    "reviewedAt": "2026-05-01T12:00:00.000Z",
+    "promotionalRestrictions": [
+      "All promotional offers are subject to 19+ age restriction in Ontario and most provinces.",
+      "iGaming Ontario regulated operators must follow AGCO advertising standards."
+    ],
+    "responsibleGamingResources": [
+      {
+        "label": "ConnexOntario (Problem Gambling)",
+        "url": "https://www.connexontario.ca"
+      },
+      {
+        "label": "ResponsibleGambling.org",
+        "url": "https://www.responsiblegambling.org"
+      }
+    ],
+    "sources": [
+      {
+        "label": "iGaming Ontario Licensed Operators Directory",
+        "url": "https://www.igamingontario.ca",
+        "publisher": "iGaming Ontario (AGCO)",
+        "reviewedAt": "2026-05-01T12:00:00.000Z"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "id": "home-en-ca",
+      "locale": "en-CA",
+      "route": "/",
+      "title": "Best Online Casino Canada 2026 – Top 10 Ranked | BestCasinoRanker",
+      "description": "Compare Canada's top 10 online casinos for 2026. Interac deposits, CAD bonuses, and iGaming Ontario licensed operators.",
+      "canonicalUrl": "https://bestcasinoranker.com/",
+      "updatedAt": "2026-05-01T12:00:00.000Z",
+      "reviewedAt": "2026-05-01T12:00:00.000Z",
+      "author": {
+        "name": "Canadian Casino Review Team",
+        "role": "Lead Editorial Analyst"
+      },
+      "blocks": [
+        {
+          "blockType": "hero",
+          "eyebrow": "🍁 Updated May 2026 — Canada Only",
+          "heading": "Best Online Casino Canada 2026",
+          "summary": "We rank and review online casinos exclusively for Canadian players. Every casino on this list accepts Interac e-Transfer, pays out in CAD, and holds a valid Canadian-recognized license.",
+          "primaryActionLabel": "See Top 10",
+          "primaryActionHref": "/#top10"
+        },
+        {
+          "blockType": "casinoList",
+          "heading": "Top 6 Canadian Casinos",
+          "intro": "Ranked by bonus value, Interac speed, and license quality",
+          "casinoSlugs": [
+            "spin-casino",
+            "jackpot-city",
+            "leovegas",
+            "bet365",
+            "betmgm-ontario",
+            "casumo",
+            "pokerstars-casino",
+            "888casino",
+            "ruby-fortune",
+            "royal-vegas"
+          ]
+        },
+        {
+          "blockType": "copy",
+          "heading": "Why Interac e-Transfer is the #1 Choice for Canadian Players",
+          "body": [
+            "Interac is Canada's universal banking network, connecting every major chartered financial institution.",
+            "Online casino deposits are instantaneous in Canadian Dollars (CAD), eliminating exchange rate surcharges.",
+            "Withdrawals are processed directly back to your Canadian bank account in 1 to 3 business days."
+          ],
+          "sources": [
+            {
+              "label": "Interac e-Transfer for Canadian Consumers",
+              "url": "https://www.interac.ca",
+              "publisher": "Interac Corp.",
+              "reviewedAt": "2026-05-01T12:00:00.000Z"
+            }
+          ]
+        },
+        {
+          "blockType": "faq",
+          "heading": "Frequently Asked Questions",
+          "items": [
+            {
+              "question": "Which online casino is best for Canadian players?",
+              "answer": "Spin Casino and Jackpot City are our top picks for Canadian players, offering full Interac support, CAD transactions, and trusted Kahnawake licenses. For Ontario residents, LeoVegas, bet365, and BetMGM Ontario offer iGaming Ontario licensed play.",
+              "sources": []
+            },
+            {
+              "question": "Can I use Interac e-Transfer at online casinos?",
+              "answer": "Yes — all 10 casinos on our list support Interac e-Transfer for both deposits and withdrawals. Deposits are instant, while payouts take 1–3 business days with zero conversion fees.",
+              "sources": []
+            },
+            {
+              "question": "What is iGaming Ontario and do I need an Ontario-licensed casino?",
+              "answer": "iGaming Ontario (iGO) is the regulatory framework for Ontario's legal online gambling market. Ontario residents receive the strongest player protection under AGCO oversight.",
+              "sources": []
+            },
+            {
+              "question": "Is online gambling legal in Canada?",
+              "answer": "Online gambling is legal for Canadian players at regulated provincial platforms and licensed international operators. Canadian players are never penalized for playing at licensed casinos.",
+              "sources": []
+            },
+            {
+              "question": "What is the minimum deposit at Canadian online casinos?",
+              "answer": "Most Canadian online casinos accept C$10 as a minimum deposit via Interac e-Transfer (e.g. Spin Casino, LeoVegas, BetMGM Ontario).",
+              "sources": []
+            }
+          ]
+        },
+        {
+          "blockType": "responsibleGaming",
+          "heading": "Gamble Responsibly (19+)",
+          "body": "Gambling should be treated as entertainment — never as a source of income. If you or someone you know has a gambling problem, reach out to provincial support services immediately.",
+          "resources": [
+            {
+              "label": "ConnexOntario Helpline (1-866-531-2600)",
+              "url": "https://www.connexontario.ca"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "casinos": [
+    {
+      "slug": "spin-casino",
+      "name": "Spin Casino",
+      "summary": "Canada's most trusted Interac casino since 2001. C$1,000 welcome package with 700+ premium Microgaming slots and live dealers.",
+      "licenseLabel": "Kahnawake & MGA Licensed",
+      "licenseUrl": "https://www.gamingcommission.ca",
+      "verifiedAt": "2026-05-01T12:00:00.000Z",
+      "rating": 4.8,
+      "highlights": [
+        "Trusted by Canadians since 2001",
+        "Full Interac e-Transfer support",
+        "700+ Microgaming Games",
+        "Min Deposit C$10",
+        "Withdrawal: 1–3 days via Interac",
+        "Wagering: 70x",
+        "Welcome Bonus: C$1,000 Welcome Bonus",
+        "Badge: Editor's Choice"
+      ]
+    },
+    {
+      "slug": "jackpot-city",
+      "name": "Jackpot City",
+      "summary": "Massive C$1,600 welcome package and daily jackpots. Dual-licensed by MGA and Kahnawake with fast Canadian banking.",
+      "licenseLabel": "MGA & Kahnawake Licensed",
+      "licenseUrl": "https://www.mga.org.mt",
+      "verifiedAt": "2026-05-01T12:00:00.000Z",
+      "rating": 4.7,
+      "highlights": [
+        "Largest welcome bonus in Canada at C$1,600",
+        "Dual-licensed by MGA and Kahnawake",
+        "500+ Top Slots & Tables",
+        "Min Deposit C$10",
+        "Withdrawal: 1–5 days via Interac",
+        "Wagering: 70x",
+        "Welcome Bonus: C$1,600 Welcome Package",
+        "Badge: Biggest Bonus"
+      ]
+    },
+    {
+      "slug": "leovegas",
+      "name": "LeoVegas",
+      "summary": "Award-winning mobile casino fully licensed by iGaming Ontario. Low 35x wagering and 1,500+ verified slots.",
+      "licenseLabel": "iGaming Ontario & AGCO",
+      "licenseUrl": "https://www.igamingontario.ca",
+      "verifiedAt": "2026-05-01T12:00:00.000Z",
+      "rating": 4.7,
+      "highlights": [
+        "Fully licensed by iGaming Ontario",
+        "Low 35x wagering requirement",
+        "1500+ Mobile Games",
+        "Min Deposit C$10",
+        "Withdrawal: 24 hours via Interac",
+        "Wagering: 35x",
+        "Welcome Bonus: C$1,000 + 200 Free Spins",
+        "Badge: iGaming Ontario ✓"
+      ]
+    },
+    {
+      "slug": "bet365",
+      "name": "bet365 Casino",
+      "summary": "World's leading gambling brand with ultra-fast 24h Interac payouts and 1x wagering bonus promotions in Ontario.",
+      "licenseLabel": "iGaming Ontario / AGCO",
+      "licenseUrl": "https://www.igamingontario.ca",
+      "verifiedAt": "2026-05-01T12:00:00.000Z",
+      "rating": 4.6,
+      "highlights": [
+        "World's largest licensed betting operator",
+        "iGaming Ontario fully licensed",
+        "600+ Exclusive Games",
+        "Min Deposit C$10",
+        "Withdrawal: 24 hours via Interac",
+        "Wagering: 1x (on bonus bets only)",
+        "Welcome Bonus: Bet C$1, Get C$200",
+        "Badge: iGaming Ontario ✓"
+      ]
+    },
+    {
+      "slug": "betmgm-ontario",
+      "name": "BetMGM Casino Ontario",
+      "summary": "Vegas-style premium experience in Ontario with the industry-lowest 15x wagering requirements and exclusive MGM slots.",
+      "licenseLabel": "iGaming Ontario / AGCO",
+      "licenseUrl": "https://www.igamingontario.ca",
+      "verifiedAt": "2026-05-01T12:00:00.000Z",
+      "rating": 4.5,
+      "highlights": [
+        "Industry-lowest 15x wagering requirement",
+        "C$25 free on sign-up — no deposit needed",
+        "500+ MGM Grand Slots",
+        "Min Deposit C$10",
+        "Withdrawal: 24–48 hours via Interac",
+        "Wagering: 15x",
+        "Welcome Bonus: C$225 in Bonuses",
+        "Badge: Lowest Wagering"
+      ]
+    },
+    {
+      "slug": "casumo",
+      "name": "Casumo",
+      "summary": "Huge catalog of over 2,000 casino games, gamified rewards and fast 24-hour payouts with full Ontario licensing.",
+      "licenseLabel": "iGaming Ontario / AGCO",
+      "licenseUrl": "https://www.igamingontario.ca",
+      "verifiedAt": "2026-05-01T12:00:00.000Z",
+      "rating": 4.5,
+      "highlights": [
+        "Largest game library on this list at 2,000+",
+        "iGaming Ontario fully licensed",
+        "2000+ Games",
+        "Min Deposit C$20",
+        "Withdrawal: 24 hours via Interac",
+        "Wagering: 30x",
+        "Welcome Bonus: C$1,200 Welcome Bonus",
+        "Badge: 2,000+ Games"
+      ]
+    },
+    {
+      "slug": "pokerstars-casino",
+      "name": "PokerStars Casino",
+      "summary": "Renowned global gaming room with integrated casino slots, live casino tables and fast Interac transfers.",
+      "licenseLabel": "iGaming Ontario / MGA",
+      "licenseUrl": "https://www.igamingontario.ca",
+      "verifiedAt": "2026-05-01T12:00:00.000Z",
+      "rating": 4.4,
+      "highlights": [
+        "Global poker & casino ecosystem",
+        "24 hours via Interac",
+        "400+ Games",
+        "Min Deposit C$10",
+        "Withdrawal: 24 hours via Interac",
+        "Wagering: 30x",
+        "Welcome Bonus: C$600 Welcome Bonus",
+        "Badge: iGaming Ontario ✓"
+      ]
+    },
+    {
+      "slug": "888casino",
+      "name": "888Casino",
+      "summary": "Industry veteran since 1997 with proprietary in-house jackpots, live dealers and Ontario compliance.",
+      "licenseLabel": "iGaming Ontario & Gibraltar",
+      "licenseUrl": "https://www.igamingontario.ca",
+      "verifiedAt": "2026-05-01T12:00:00.000Z",
+      "rating": 4.3,
+      "highlights": [
+        "Exclusive in-house progressive jackpots",
+        "Established in 1997",
+        "800+ Games",
+        "Min Deposit C$20",
+        "Withdrawal: 1–3 days via Interac",
+        "Wagering: 35x",
+        "Welcome Bonus: C$1,500 Welcome Package",
+        "Badge: 800+ Games"
+      ]
+    },
+    {
+      "slug": "ruby-fortune",
+      "name": "Ruby Fortune",
+      "summary": "Premium Microgaming progressive jackpots, 24/7 Canadian customer care and safe Interac transactions.",
+      "licenseLabel": "Kahnawake & MGA",
+      "licenseUrl": "https://www.gamingcommission.ca",
+      "verifiedAt": "2026-05-01T12:00:00.000Z",
+      "rating": 4.2,
+      "highlights": [
+        "Fast Interac payouts and 24/7 support",
+        "500+ Microgaming Jackpots",
+        "Min Deposit C$10",
+        "Withdrawal: 1–3 days via Interac",
+        "Wagering: 60x",
+        "Welcome Bonus: C$750 Welcome Bonus",
+        "Badge: Fast Interac Payouts"
+      ]
+    },
+    {
+      "slug": "royal-vegas",
+      "name": "Royal Vegas",
+      "summary": "Classic Vegas ambiance with a 4-part welcome deposit match and high-roller rewards for Canadian VIP players.",
+      "licenseLabel": "MGA Licensed",
+      "licenseUrl": "https://www.mga.org.mt",
+      "verifiedAt": "2026-05-01T12:00:00.000Z",
+      "rating": 4.1,
+      "highlights": [
+        "Generous 4-tier match package",
+        "700+ Vegas-style tables & slots",
+        "Min Deposit C$10",
+        "Withdrawal: 3–5 days via Interac",
+        "Wagering: 60x",
+        "Welcome Bonus: C$1,200 Welcome Bonus",
+        "Badge: 4-Part Bonus"
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "slug": "spin-casino-offer",
+      "casinoSlug": "spin-casino",
+      "label": "Claim C$1,000 Welcome Bonus",
+      "destinationUrl": "https://www.bestcasinoranker.com/go/spin-casino",
+      "termsSummary": "19+ only. 1st deposit 100% up to C$400, 2nd & 3rd 100% up to C$300. 70x wagering.",
+      "validFrom": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "slug": "jackpot-city-offer",
+      "casinoSlug": "jackpot-city",
+      "label": "Claim C$1,600 Package",
+      "destinationUrl": "https://www.bestcasinoranker.com/go/jackpot-city",
+      "termsSummary": "19+ only. 4x 100% matches up to C$400 each. 70x wagering applies.",
+      "validFrom": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "slug": "leovegas-offer",
+      "casinoSlug": "leovegas",
+      "label": "Claim C$1,000 + 200 Free Spins",
+      "destinationUrl": "https://www.bestcasinoranker.com/go/leovegas",
+      "termsSummary": "19+ Ontario. 35x wagering. Free spins on selected slots.",
+      "validFrom": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "slug": "bet365-offer",
+      "casinoSlug": "bet365",
+      "label": "Bet C$1, Get C$200",
+      "destinationUrl": "https://www.bestcasinoranker.com/go/bet365",
+      "termsSummary": "19+ Ontario only. 1x wagering on bonus bets.",
+      "validFrom": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "slug": "betmgm-ontario-offer",
+      "casinoSlug": "betmgm-ontario",
+      "label": "Claim C$225 Bonuses",
+      "destinationUrl": "https://www.bestcasinoranker.com/go/betmgm-ontario",
+      "termsSummary": "19+ Ontario. Lowest 15x wagering requirement.",
+      "validFrom": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "slug": "casumo-offer",
+      "casinoSlug": "casumo",
+      "label": "Claim C$1,200 Bonus",
+      "destinationUrl": "https://www.bestcasinoranker.com/go/casumo",
+      "termsSummary": "19+ Ontario. 100% up to C$1,200 with 30x wagering.",
+      "validFrom": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "slug": "pokerstars-offer",
+      "casinoSlug": "pokerstars-casino",
+      "label": "Claim C$600 Bonus",
+      "destinationUrl": "https://www.bestcasinoranker.com/go/pokerstars-casino",
+      "termsSummary": "19+ only. 100% match up to C$600.",
+      "validFrom": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "slug": "888casino-offer",
+      "casinoSlug": "888casino",
+      "label": "Claim C$1,500 Package",
+      "destinationUrl": "https://www.bestcasinoranker.com/go/888casino",
+      "termsSummary": "19+ only. 5-part deposit bonus package.",
+      "validFrom": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "slug": "ruby-fortune-offer",
+      "casinoSlug": "ruby-fortune",
+      "label": "Claim C$750 Bonus",
+      "destinationUrl": "https://www.bestcasinoranker.com/go/ruby-fortune",
+      "termsSummary": "19+ only. 3x 100% matches up to C$250 each.",
+      "validFrom": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "slug": "royal-vegas-offer",
+      "casinoSlug": "royal-vegas",
+      "label": "Claim C$1,200 Bonus",
+      "destinationUrl": "https://www.bestcasinoranker.com/go/royal-vegas",
+      "termsSummary": "19+ only. 4x 100% matches up to C$300 each.",
+      "validFrom": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "redirects": []
+}

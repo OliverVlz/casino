@@ -307,7 +307,6 @@ export async function buildSiteSnapshot(
       ...(offer.validUntil ? { validUntil: isoDate(offer.validUntil) } : {}),
     }
   })
-
   const generatedAt = latestTimestamp([
     site,
     policy,
